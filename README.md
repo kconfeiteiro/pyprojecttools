@@ -7,7 +7,7 @@ The purpose of this repository is just to include all of the small functions I u
 All you need to do to use the functions is clone the repository locally by typing 
 
 ```
-git clone https://github.com/kconfeiteiro/PyProjectUtils/edit/main/README.md
+git clone https://github.com/kconfeiteiro/PyProjectTools
 ```
 
  in your `cmd` (opened in your working directory). Then, you can call functions from the `PyProjectUtils` directory. 
@@ -45,7 +45,7 @@ to import a single class. Note that if you make changes to the cloned repository
 # import the class 'Directories' from the FileSorting script
 from PyProjectUtils.Utils.FileSorting import Directories as dr
 
-# call function from imported class
+# call function from the imported class
 filepath = 'example/path/to/dir'
 dr.mkdir(filepath)
 ```
@@ -56,7 +56,7 @@ where the function `dr.mkdir()` creates a directory if it does not exist.
 Pull requests are automatically completed. To pull new changes, use the command
 
 ```
-cd PyProjectUtils & git pull https://github.com/kconfeiteiro/PyProjectUtils & cd ..
+cd PyProjectUtils & git pull https://github.com/kconfeiteiro/PyProjectTools & cd ..
 ```
 
 in your terminal (opened in your working directory).
