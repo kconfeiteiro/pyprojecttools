@@ -1,0 +1,21 @@
+name: Install Dependencies
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - requested
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          if [ -f "requirements.txt" ]; then
+            pip install -r requirements.txt
+          fi
