@@ -1,13 +1,14 @@
+import glob as g
 import os
-
 
 """ for things like sorting, deleting, copying files, and dealing with directories """
 
 class FileSorting:
 
-    def __init__(self, directory: str = ...):
+    def __init__(self, directory: str = ..., filetype: str = ...):
         self.directory = directory
         self.directory_list = os.listdir(self.directory)
+        self.filetype = filetype
 
     def delete_filetype(folder: str = ..., *filetypes):
         # deletes files of specific extension
@@ -19,19 +20,18 @@ class FileSorting:
                 removed.append(file)
                 os.remove(file)
 
-    def filter(self):
-        '''
-        take in a directory and filter out based on file extensions or dir
-        names
-        '''
-        pass
+    @classmethod
+    def filter(cls, directory: str = None, filetype: str = ..., **kwargs):
+        # take in a directory and filter out based on file extensions or dir names
+        # used statically or with class instance
+        if directory is None: directory = cls.directory
+        return g.glob(os.path.join(directory, filetype), **kwargs)
 
 
 class Directories:
 
     def mkdir(*paths):
         # creates directories if they don't exist
-        # takes n amount of dirs
         for path in paths:
             if not os.path.exists(path):
                 os.mkdir(path)
