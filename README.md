@@ -4,17 +4,27 @@ The purpose of this repository is just to include all of the small functions I u
 
 # Usage
 
-All you need to do to use the functions is clone the repository locally by typing `https://github.com/kconfeiteiro/PyProjectUtils/edit/main/README.md` in your cmd (opened in your working directory). Then, you can call functions from the `PyProjectUtils` directory.
+All you need to do to use the functions is clone the repository locally by typing 
+
+```
+`https://github.com/kconfeiteiro/PyProjectUtils/edit/main/README.md`
+```
+
+ in your cmd (opened in your working directory). Then, you can call functions from the `PyProjectUtils` directory.
 
 ## Calling Functions
+
 To call functions in your main script, use `from PyProjectUtils import Tools` (for example) to import an entire script. If you would like to call a specific class only, use `from PyProjectUtils.Utils.Tools import Tools` to import a single class.
 
 ## Pull requests
+
 Pull requests are automatically completed. To pull new changes, use the command
+
 ```
 cd PyProjectUtils & git pull https://github.com/kconfeiteiro/PyProjectUtils & cd ..
 ```
-in your terminal (opened in your working directory). I found that this is the best method. 
+
+in your terminal (opened in your working directory). I found that this is the best method.
 
 # Issues and Collaboration
 
