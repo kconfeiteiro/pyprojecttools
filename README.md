@@ -7,7 +7,7 @@ The purpose of this repository is just to include all of the small functions I u
 All you need to do to use the functions is clone the repository locally by typing 
 
 ```
-`https://github.com/kconfeiteiro/PyProjectUtils/edit/main/README.md`
+https://github.com/kconfeiteiro/PyProjectUtils/edit/main/README.md
 ```
 
  in your cmd (opened in your working directory). Then, you can call functions from the `PyProjectUtils` directory.
