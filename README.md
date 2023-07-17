@@ -30,7 +30,7 @@ Pull requests are automatically completed. To pull new changes, use the command
 cd PyProjectUtils & git pull https://github.com/kconfeiteiro/PyProjectUtils & cd ..
 ```
 
-in your terminal (opened in your working directory). I found that this is the best method.
+in your terminal (opened in your working directory).
 
 # Issues and Collaboration
 
