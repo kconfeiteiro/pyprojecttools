@@ -14,8 +14,16 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
+      - name: Copy requirements.txt
+        run: |
+          cp requirements.txt $HOME/requirements.txt
+
       - name: Install dependencies
         run: |
-          if [ -f "requirements.txt" ]; then
-            pip install -r requirements.txt
+          if [ -f "$HOME/requirements.txt" ]; then
+            echo "Installing Python dependencies..."
+            py -m pip install -r $HOME/requirements.txt
+            echo "Python dependencies installed successfully."
+          else
+            echo "No requirements.txt file found."
           fi
