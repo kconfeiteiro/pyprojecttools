@@ -37,6 +37,23 @@ class Directories:
                 os.mkdir(path)
                 print(f'Directory created {path}')
 
+    def generate_unique_name(
+        filename: str = ..., 
+        path: str = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), # CWD
+        copy_pattern: str = 'Run '
+        ):
+
+        # FIXME - fix rest argument for path
+        # takes a set name (filename) then if that file exists already it will
+        # create another with a counter appended to its name
+        base_name, ext = os.path.splitext(filename)
+        unique_name, counter = filename, 1
+        while os.path.exists(os.path.join(path, unique_name)):
+            counter += 1
+            unique_name = f'{base_name} ({copy_pattern}{counter}){ext}'
+
+        return unique_name, counter
+
 
 class FileFetching:
 
