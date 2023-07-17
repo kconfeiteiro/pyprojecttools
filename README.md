@@ -4,27 +4,34 @@ The purpose of this repository is just to include all of the small functions I u
 
 # Usage
 
-All you need to do to use the functions is clone the repository locally by typing 
+All you need to do to use the functions is clone the repository locally by typing
 
 ```
 git clone https://github.com/kconfeiteiro/PyProjectTools
 ```
 
- in your `cmd` (opened in your working directory). Then, you can call functions from the `PyProjectUtils` directory. 
+ in your `cmd` (opened in your working directory). Then, you can call functions from the `PyProjectUtils` directory.
 
- ## Pip Packages
+## Pip Packages
+
  If you are missing `pip` packages, do not forget to install the `requirements.txt` using the terminal command
- ```
+
+```
 py -m pip install -r requirements.txt
 ```
+
 Make sure to be in the directory of the cloned repository, `PyProjectTools`, while `pip` installing the requirements. You can also use a similar command as *Pull Requests*:
+
 ```
 cd PyProjectTools & py -m pip install -r requirements.txt & cd ..
 ```
+
 which will change your directory to that of the registry, then `cd ..` will automatically return you to your working directory.
 
 ## Calling Functions
+
 The layout of the directory is (after its cloned)
+
 ```
 └───PyProjectUtils
      |
@@ -35,17 +42,23 @@ The layout of the directory is (after its cloned)
          │   Tools.py
          │   __init__.py
 ```
+
 To call functions in your main script, use
+
 ```py
 from PyProjectUtils import Tools
-``` 
-(for example) to import an entire script. If you would like to call a specific class only, use 
+```
+
+(for example) to import an entire script. If you would like to call a specific class only, use
+
 ```py
 from PyProjectUtils.Utils.Tools import Tools
-``` 
+```
+
 to import a single class. Note that if you make changes to the cloned repository, they will not be reflected on GitHub.
 
 ### Working Example
+
 ```py
 # import the class 'Directories' from the FileSorting script
 from PyProjectUtils.Utils.FileSorting import Directories as dr
@@ -54,15 +67,24 @@ from PyProjectUtils.Utils.FileSorting import Directories as dr
 filepath = 'example/path/to/dir'
 dr.mkdir(filepath)
 ```
+
 where the function `dr.mkdir()` creates a directory if it does not exist.
 
 ## Pull requests
 
 Pull requests are automatically completed. To pull new changes, use the command
+
 ```
 cd PyProjectTools & git pull https://github.com/kconfeiteiro/PyProjectTools & cd ..
 ```
-in your terminal (opened in your working directory). You can also simply use `cd PyProjectTools & git pull & cd ..`. 
+
+in your terminal (opened in your working directory). You can also simply use `cd PyProjectTools & git pull & cd ..`
+
+### Git not Downloaded
+
+If you do not have git downloaded and configured, the commands above will not work in your terminal. If this is the case, you can simply download the repository as a `.zip` file by clicking *Download Zip* in the green `<> Code` dropdown menu:
+
+![1689627172676](image/README/1689627172676.png)
 
 # Issues and Collaboration
 
