@@ -29,7 +29,7 @@ class FileSorting:
 
 class Directories:
 
-    def mkdir_ifNA(*paths):
+    def mkdir(*paths):
         # creates directories if they don't exist
         # takes n amount of dirs
         for path in paths:
