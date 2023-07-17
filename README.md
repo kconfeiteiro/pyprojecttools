@@ -17,6 +17,11 @@ git clone https://github.com/kconfeiteiro/PyProjectTools
  ```
 py -m pip install -r requirements.txt
 ```
+Make sure to be in the directory of the cloned repository, `PyProjectTools`, while `pip` installing the requirements. You can also use a similar command as *Pull Requests*:
+```
+cd PyProjectTools & py -m pip install -r requirements.txt & cd ..
+```
+which will change your directory to that of the registry, then `cd ..` will automatically return you to your working directory.
 
 ## Calling Functions
 The layout of the directory is (after its cloned)
@@ -63,4 +68,4 @@ in your terminal (opened in your working directory).
 
 # Issues and Collaboration
 
-If there are any issues, bugs, or broken functions feel free to contact confeitk@outlook.com. Or, if you would like to add functions of your own, feel free to fork the repository!
+If there are any issues, bugs, or broken functions feel free to contact confeitk@outlook.com. Or, if you would like to add your own functions, feel free to fork the repository!
