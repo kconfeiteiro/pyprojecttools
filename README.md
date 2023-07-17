@@ -56,7 +56,7 @@ where the function `dr.mkdir()` creates a directory if it does not exist.
 Pull requests are automatically completed. To pull new changes, use the command
 
 ```
-cd PyProjectUtils & git pull https://github.com/kconfeiteiro/PyProjectTools & cd ..
+cd PyProjectTools & git pull https://github.com/kconfeiteiro/PyProjectTools & cd ..
 ```
 
 in your terminal (opened in your working directory).
