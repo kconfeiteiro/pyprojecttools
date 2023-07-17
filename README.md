@@ -1,6 +1,6 @@
 # Introduction
 
-The purpose of this repository is just to include all of the small functions I use for multiple projects. Having them here allows me to simply clone the repository rather than copying the code for each project. This repository is a work in progress and I will be adding whichever functions I find are useful. As this repository grows, I will improve on its organization, as it was thrown together relatively quickly, so its organization is questionable, at best.
+The purpose of this repository is just to include all of the small functions I use for multiple projects. Having them here allows me to simply clone the repository rather than copying the code for each project. This repository is a work in progress and I will be adding whichever functions I find are useful. As this repository grows, I will improve on its organization, as it was thrown together relatively quickly, so its organization is questionable, at best. Explore all the functions in the `Utils` directory.
 
 # Usage
 
@@ -19,8 +19,37 @@ py -m pip install -r requirements.txt
 ```
 
 ## Calling Functions
+The layout of the directory is (after its cloned)
+```
+└───PyProjectUtils
+     |
+     └───Utils
+         │   DataSaving.py
+         │   FileReading.py
+         │   FileSorting.py
+         │   Tools.py
+         │   __init__.py
+```
+To call functions in your main script, use
+```py
+from PyProjectUtils import Tools
+``` 
+(for example) to import an entire script. If you would like to call a specific class only, use 
+```py
+from PyProjectUtils.Utils.Tools import Tools
+``` 
+to import a single class. Note that if you make changes to the cloned repository, they will not be reflected on GitHub.
 
-To call functions in your main script, use `from PyProjectUtils import Tools` (for example) to import an entire script. If you would like to call a specific class only, use `from PyProjectUtils.Utils.Tools import Tools` to import a single class. Note that if you make changes to the cloned repository, they will not be reflected on GitHub.
+### Working Example
+```py
+# import the class 'Directories' from the FileSorting script
+from PyProjectUtils.Utils.FileSorting import Directories as dr
+
+# call function from imported class
+filepath = 'example/path/to/dir'
+dr.mkdir(filepath)
+```
+where the function `dr.mkdir()` creates a directory if it does not exist.
 
 ## Pull requests
 
