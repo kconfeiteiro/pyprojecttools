@@ -27,6 +27,17 @@ class FileSorting:
         pass
 
 
+class Directories:
+
+    def mkdir_ifNA(*paths):
+        # creates directories if they don't exist
+        # takes n amount of dirs
+        for path in paths:
+            if not os.path.exists(path):
+                os.mkdir(path)
+                print(f'Directory created {path}')
+
+
 class FileFetching:
 
     def fetch_all_files(parent_folder: str):
