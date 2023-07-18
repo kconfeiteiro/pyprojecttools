@@ -36,20 +36,22 @@ which will change your directory to that of the registry, then `cd ..` will auto
 The layout of the directory is (after its cloned)
 
 ```
-└───PyProjectUtils
-     |
-     └───Utils
-         │   DataSaving.py
-         │   FileReading.py
-         │   FileSorting.py
-         │   Tools.py
-         │   __init__.py
+< Your working directory >
+   |   main.py
+   └─── PyProjectUtils
+         |
+         └─── Utils
+              │   DataSaving.py
+              │   FileReading.py
+              │   FileSorting.py
+              │   Tools.py
+              │   __init__.py
 ```
 
-To call functions in your main script, use
+which means to call functions in your main script (`main.py`, in this example), use
 
 ```py
-from PyProjectUtils import Tools
+from PyProjectUtils.Utils import Tools
 ```
 
 (for example) to import an entire script. If you would like to call a specific class only, use
