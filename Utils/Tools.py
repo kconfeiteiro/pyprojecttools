@@ -17,6 +17,7 @@ class Tools:
 
     def shorten(*cols, new_len: int = None):
         # returns tuple of shortened lists/dataframes
+        # this was written for simple use with testing plotting functions
         return (col[:new_len] for col in cols)
         
     def map_matrix(m, n):
