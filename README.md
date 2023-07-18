@@ -2,9 +2,12 @@
 
 The purpose of this repository is just to include all of the small functions I use for multiple projects. Having them here allows me to simply clone the repository rather than copying the code for each project. This repository is a work in progress and I will be adding whichever functions I find are useful. As this repository grows, I will improve on its organization, as it was thrown together relatively quickly, so its organization is questionable, at best. Explore all the functions in the `Utils` directory.
 
+## Disclaimer
+The code in this repository was written using version `Python 3.11.4`, meaning, there might be compatibility issues with older Python versions. You can download version 3.11.4 [here](https://www.python.org/downloads/windows/).
+
 # Usage
 
-All you need to do to use the functions is clone the repository locally by typing
+All you need to do to use the functions is clone the repository locally by typing 
 
 ```
 git clone https://github.com/kconfeiteiro/PyProjectTools
@@ -20,7 +23,7 @@ git clone https://github.com/kconfeiteiro/PyProjectTools
 py -m pip install -r requirements.txt
 ```
 
-Make sure to be in the directory of the cloned repository, `PyProjectTools`, while `pip` installing the requirements. You can also use a similar command as *Pull Requests*:
+Make sure to be in the directory of the cloned repository, `PyProjectTools`, while `pip` installing the requirements. You can also use a similar command as [Pull Requests](https://github.com/kconfeiteiro/PyProjectTools#pull-requests):
 
 ```
 cd PyProjectTools & py -m pip install -r requirements.txt & cd ..
@@ -55,7 +58,7 @@ from PyProjectUtils import Tools
 from PyProjectUtils.Utils.Tools import Tools
 ```
 
-to import a single class. Note that if you make changes to the cloned repository, they will not be reflected on GitHub.
+Note that if you make changes to the cloned repository, they will not be reflected on GitHub.
 
 ### Working Example
 
