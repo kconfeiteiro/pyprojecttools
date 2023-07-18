@@ -24,7 +24,9 @@ class FileSorting:
     def filter(cls, directory: str = None, filetype: str = ..., **kwargs):
         # take in a directory and filter out based on file extensions or dir names
         # used statically or with class instance
-        if directory is None: directory = cls.directory
+        if directory is None: 
+            directory = cls.directory
+            
         return g.glob(os.path.join(directory, filetype), **kwargs)
 
 
