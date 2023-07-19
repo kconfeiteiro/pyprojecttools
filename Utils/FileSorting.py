@@ -32,12 +32,13 @@ class FileSorting:
 
 class Directories:
 
-    def mkdir(*paths):
+    def mkdir(*paths, display: bool = False):
         # creates directories if they don't exist
         for path in paths:
             if not os.path.exists(path):
                 os.mkdir(path)
-                print(f'Directory created {path}')
+                if display:
+                    print(f'Directory created {path}')
 
     def generate_unique_name(
         filename: str = ..., 
