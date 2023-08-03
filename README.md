@@ -7,13 +7,20 @@ The code in this repository was written using version `Python 3.11.4`, meaning, 
 
 # Usage
 
-All you need to do to use the functions is clone the repository locally by typing 
+All you need to do to use the functions is clone the repository locally by typing
 
 ```
 git clone https://github.com/kconfeiteiro/PyProjectTools
 ```
+in your `cmd` (opened in your working directory). Then, you can call functions from the `PyProjectUtils` directory.
 
- in your `cmd` (opened in your working directory). Then, you can call functions from the `PyProjectUtils` directory.
+For future use, `clonePyProjectTools.bat` has been added to ease the cloning process for multiple projects. The URL does not change, so this can be used as long as need. To run the batch file, simply type
+
+```cmd
+clonePyProjectTools.bat
+```
+in your terminal. Or, click the icon for the `.bat` file from your computer's native file explorer.
+
 
 ## Pip Packages
 
