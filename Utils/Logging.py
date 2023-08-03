@@ -4,21 +4,23 @@ import time
 import timeit
 from datetime import datetime
 from functools import wraps
-from typing import Any, Callable, Literal, TypedDict
+from typing import Any, Callable, Literal, Tuple, TypedDict, Union
 
+from PackageConfigs import GuiConfig as cfg
 
+# NOTE - Type 'psgdemos' into CMD for demos of PySimpleGUI
 today = datetime.now()
 formatted_date = today.strftime("%Y_%B_%d")
 
 
-''' For logging, as a part of application monitoring '''
+''' Setup for the GUI being made for this program '''
 
 class LoggerBackend:
 
 	_instance = None
 	def __new__(
 			cls,
-			log_file: str = ...,
+			log_file: str = cfg.log_filename,
 			log_level: Callable = logging.DEBUG,
 			format: Any = None,
 			stream_handler_level: Callable = logging.INFO
@@ -26,7 +28,7 @@ class LoggerBackend:
 		"""Backend logging configuration class object
 
 		Args:
-			log_file (str, optional): save name for log file. Defaults to ....
+			log_file (str, optional): save name for log file. Defaults to cfg.log_filename.
 			log_level (Callable, optional): logging level configuration, defined by 'logging' library parameters. Defaults to logging.DEBUG.
 			format (Any, optional): string format for log message. Defaults to None.
 			stream_handler_level (Callable, optional): stream handler for simultaneous terminal printing (part of 'logging' library). Defaults to logging.INFO.
@@ -180,12 +182,23 @@ class Timer:
 		"""
 		self.func = func
 
-	def __call__(self, *args, **kwargs):
+	def __call__(self, return_result: bool = False, *args, **kwargs) -> Union[Tuple[float, Any], float]:
+		"""Calculates function execution time
+
+		Args:
+			return_result (bool, optional): option to return result of function. Defaults to False.
+
+		Returns:
+			tuple[float, Any] or float: returns execution or addition of the function's result
+		"""
 		start_time = time.time()
 		result = self.func(*args, **kwargs)
-		end_time = time.time()
-		execution_time = end_time - start_time
-		return result
+		execution_time = time.time() - start_time
+
+		if return_result:
+			return execution_time, result
+		else:
+			return execution_time
 
 
 class LogDictConfig(TypedDict):
