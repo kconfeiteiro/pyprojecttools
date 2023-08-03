@@ -6,9 +6,6 @@ from datetime import datetime
 from functools import wraps
 from typing import Any, Callable, Literal, Tuple, TypedDict, Union
 
-from PackageConfigs import GuiConfig as cfg
-
-# NOTE - Type 'psgdemos' into CMD for demos of PySimpleGUI
 today = datetime.now()
 formatted_date = today.strftime("%Y_%B_%d")
 
@@ -20,7 +17,7 @@ class LoggerBackend:
 	_instance = None
 	def __new__(
 			cls,
-			log_file: str = cfg.log_filename,
+			log_file: str = ...,
 			log_level: Callable = logging.DEBUG,
 			format: Any = None,
 			stream_handler_level: Callable = logging.INFO
@@ -28,7 +25,7 @@ class LoggerBackend:
 		"""Backend logging configuration class object
 
 		Args:
-			log_file (str, optional): save name for log file. Defaults to cfg.log_filename.
+			log_file (str, optional): save name for log file. Defaults to ....
 			log_level (Callable, optional): logging level configuration, defined by 'logging' library parameters. Defaults to logging.DEBUG.
 			format (Any, optional): string format for log message. Defaults to None.
 			stream_handler_level (Callable, optional): stream handler for simultaneous terminal printing (part of 'logging' library). Defaults to logging.INFO.
