@@ -1,32 +1,33 @@
 import json
 import os
-from typing import (List, Literal, Union)
+from typing import (Any, Dict, List, Literal, Union)
 
 ''' For anything realated to reading data from file or directory '''
 
 class FileReading:
 
-    def read_txt(filename: str, mode: Literal['r', 'rb'] = 'r', **kwargs):
-        '''
-        read line(s) from a text file
+    def read_txt(filename: str = ..., mode: Literal['r', 'rb'] = 'r', **kwargs) -> List[str]:
+        """Reads text file
 
         Args:
-        ---
-        :filename (string) - name of file you want to read
-        :mode (string) - reading mode; 'r' for normal, 'rb' for reading bytes
-        :kwargs (Any) - additional arguments for open()
-        '''
+            filename (str, optional): file name to read. Defaults to ....
+            mode (literal, optional): reading mode. Defaults to 'r'.
+
+        Returns:
+            list: returns list of strings of line read
+        """
         with open(filename, mode=mode, **kwargs) as file:
             return file.readlines()
 
-    def read_json(filename: str = ..., *args, **kwargs):
-        '''
-        reads a JSON file
+    def read_json(filename: str = ..., *args, **kwargs) -> Dict[Any, Any]:
+        """Reads JSON file
 
         Args:
-        ---
-        :filename (string) - name of file you want to read
-        '''
+            filename (str, optional): name of JSON file to read. Defaults to ....
+
+        Returns:
+            dictionary: returns read JSON data
+        """
         assert os.path.exists(filename), "File not found"
         with open(filename, *args, **kwargs) as f:
             return json.load(f)
@@ -40,16 +41,13 @@ class FileWriting:
         *args,
         **kwargs
     ):
-        '''
-        writes string or list of string to a text file
+        """Writes str or list of strings to a text file
 
         Args:
-        ---
-        :save_as (string) - filename for file you are writing to
-        :content (list or string) - content that you are writing to the file
-        :args & :kwargs (Any) - additional arguments for open() function
-        '''
-
+            save_as (str, optional): name of saved file. Defaults to ....
+            content (Union[str, List[str]], optional): list or list of strings to write. Defaults to ....
+            mode (literal, optional): writing mode. Defaults to "w".
+        """
         with open(save_as, mode, *args, **kwargs) as file:
             assert (
                 type(content) in [list, List[str]],
