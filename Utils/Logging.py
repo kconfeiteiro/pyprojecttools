@@ -155,9 +155,6 @@ class Logger(LoggerBackend):
 			else:
 				pass
 
-logger = Logger()
-
-
 class Counter:
 
 	def __init__(self):
