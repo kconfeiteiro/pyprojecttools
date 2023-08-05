@@ -71,8 +71,6 @@ class LoggerBackend:
 		Returns:
 			str: filename with unique number identifier appended to original filename
 		"""
-
-		# for logging multiple consecutive runs
 		base_name, ext = os.path.splitext(filename)
 		unique_name, counter = filename, 1
 		while os.path.exists(os.path.join(path, unique_name)):
@@ -104,7 +102,6 @@ class Logger(LoggerBackend):
 			message_type (str, optional): type of message listed in 'logging' library. Defaults to 'info'.
 			time_execution (bool, optional): option to time function exectuion and log results. Defaults to False.
 		"""
-
 		def decorator(func):
 			@wraps(func)
 			def wrapper(*args, **kwargs):
@@ -139,7 +136,6 @@ class Logger(LoggerBackend):
 			message (str, optional): message to log. Defaults to ....
 			message_type (str, optional): type of logging messaged listed in 'logging' library. Defaults to 'info'.
 		"""
-
 		if message in [None, 'none', 'None'] or 'None' in message:
 			pass
 		else:
