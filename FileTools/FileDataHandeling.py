@@ -1,6 +1,6 @@
 import json
 import os
-from typing import (Any, Dict, List, Literal, Union)
+from typing import Any, Dict, List, Literal, Union
 
 ''' For anything realated to reading data from file or directory '''
 

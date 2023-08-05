@@ -1,12 +1,15 @@
-import glob as g
+import glob
 import os
+from typing import (Any, Callable, Dict, List, Literal, NewType, Tuple, Type,
+                    TypeVar, Union)
 
-""" for things like sorting, deleting, copying files, and dealing with directories """
+
+""" Sorting, deleting, copying files, and dealing with directories """
 
 class FileSorting:
 
     def __init__(self, directory: str = ..., filetype: str = ...):
-        """Clas object for filtering and sorting files in a specific directory
+        """Class object for filtering and sorting files in a specific directory.
 
         Args:
             directory (str, optional): target directory. Defaults to ....
@@ -32,25 +35,25 @@ class FileSorting:
 
     @classmethod
     def filter(cls, directory: str = None, filetype: str = ..., **kwargs):
-        """Filters target directory based on filetype
+        """Filters target directory based on filetype. Can be used statically or as object method. Adding 'recursive=True' as an additional kwarg will enable it to search within subdirectories.
 
         Args:
             directory (str, optional): target directory. Defaults to None.
             filetype (str, optional): target filetype. Defaults to ....
 
         Returns:
-            _type_: _description_
+           List of all the absolute file paths for all matching files
         """
         if directory is None:
             directory = cls.directory
 
-        return g.glob(os.path.join(directory, filetype), **kwargs)
+        return glob.glob(os.path.join(directory, filetype), **kwargs)
 
 
 class Directories:
 
     def mkdir(*paths: str, display: bool = False):
-        """Makes directory if it does not exist
+        """Makes directory if it does not exist.
 
         Args:
             paths (list): enter enter each individual arguments for each path (i.e., "path1", "path1", etc.)
@@ -68,7 +71,7 @@ class Directories:
         path: str = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), # CWD
         copy_pattern: str = 'Run '
         ):
-        """Static function for producing updating enumeration of consecutive log files
+        """Static function for producing updating enumeration of consecutive log files.
 
 		Args:
 			filename (str): original name of file. Defaults to ...
@@ -90,10 +93,14 @@ class Directories:
 
 class FileFetching:
 
-    def fetch_all_files(parent_folder: str):
-        # returns a list of all files that are part of directory
-        target_files = []
-        for path, subdirs, files in os.walk(parent_folder):
-            for name in files:
-                target_files.append(os.path.join(path, name))
-        return target_files
+    def fetch_all_files(parent_folder: str = ..., file_type: str = ...) -> List[str]:
+        """Fetches all files recursively in a desired directory and all its subdirectories.
+
+        Args:
+            parent_folder (str, optional): path to folder you want to parse. Defaults to ....
+            file_type (str, optional): file extension you are searching for. Defaults to ....
+
+        Returns:
+            List of strings of absolute paths of every file that fits 'file_type.'
+        """
+        return glob.glob(parent_folder + '/**/' + file_type, recursive=True)

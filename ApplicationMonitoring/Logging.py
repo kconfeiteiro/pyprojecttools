@@ -6,11 +6,12 @@ from datetime import datetime
 from functools import wraps
 from typing import Any, Callable, Literal, Tuple, TypedDict, Union
 
+# formatted date
 today = datetime.now()
 formatted_date = today.strftime("%Y_%B_%d")
 
 
-''' Setup for the GUI being made for this program '''
+''' Backend for implementation of logging for any Python program '''
 
 class LoggerBackend:
 
@@ -22,7 +23,7 @@ class LoggerBackend:
 			format: Any = None,
 			stream_handler_level: Callable = logging.INFO
    	):
-		"""Backend logging configuration class object
+		"""Backend logging configuration class object. Does not need to be independently instantiated, all methods are inherited by the child class.
 
 		Args:
 			log_file (str, optional): save name for log file. Defaults to ....
@@ -60,7 +61,7 @@ class LoggerBackend:
 		path: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__))), # CWD
 		copy_pattern: str = 'Run'
 		):
-		"""Static function for producing updating enumeration of consecutive log files
+		"""Static function for producing updating enumeration of consecutive log files.
 
 		Args:
 			filename (str): original name of file. Defaults to ...
@@ -86,7 +87,7 @@ class Logger(LoggerBackend):
 	def __init__(self, *args, **kwargs) :
 		"""
   		Class object which includes log decorator for function logging with optional function timer
-    		and option for manual logging, based on configuration executed in the parent class, LoggerBackend
+    		and option for manual logging, based on configuration executed in the parent class, LoggerBackend.
 		"""
 		super().__init__(*args, **kwargs)
 
@@ -96,7 +97,7 @@ class Logger(LoggerBackend):
 			message_type: Literal['debug', 'info', 'warning', 'error', 'critical'] = 'info',
 			time_execution: bool = False
    		):
-		"""Function decorator for automated logging, includes function timer, and option to log any combination of message and timer
+		"""Function decorator for automated logging, includes function timer, and option to log any combination of message and timer.
 
 		Args:
 			message (str, optional): message to log. Defaults to None.
@@ -132,7 +133,7 @@ class Logger(LoggerBackend):
 			*args,
    			**kwargs
 		):
-		"""Optional logging for manual messages
+		"""Optional logging for manual messages.
 
 		Args:
 			message (str, optional): message to log. Defaults to ....
@@ -155,51 +156,9 @@ class Logger(LoggerBackend):
 			else:
 				pass
 
-logger = Logger()
-
-
-class Counter:
-
-	def __init__(self):
-		""" Decorator for counting number of function executions. Can be used with Logger class """
-		self.count = 0
-
-	def __call__(self):
-		self.count += 1
-		return self.count
-
-
-class Timer:
-
-	def __init__(self, func):
-		"""Independent decorator for timing function executions. Can be used with Logger class
-
-		Args:
-			func (callable): function automatically inputted when decorator is called
-		"""
-		self.func = func
-
-	def __call__(self, return_result: bool = False, *args, **kwargs) -> Union[Tuple[float, Any], float]:
-		"""Calculates function execution time
-
-		Args:
-			return_result (bool, optional): option to return result of function. Defaults to False.
-
-		Returns:
-			tuple[float, Any] or float: returns execution or addition of the function's result
-		"""
-		start_time = time.time()
-		result = self.func(*args, **kwargs)
-		execution_time = time.time() - start_time
-
-		if return_result:
-			return execution_time, result
-		else:
-			return execution_time
-
 
 class LogDictConfig(TypedDict):
-	""" Dictionary type hint configuration (currently unused) """
+	""" Dictionary type hint configuration (currently unused). """
 	filename: str
 	filemode: Literal['w', 'a']
 	format: str
