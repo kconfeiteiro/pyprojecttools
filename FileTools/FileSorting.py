@@ -1,13 +1,14 @@
 import glob
 import os
-from typing import (Any, Callable, Dict, List, Literal, NewType, Tuple, Type,
-                    TypeVar, Union)
+from typing import (
+    List,
+)
 
 
 """ Sorting, deleting, copying files, and dealing with directories """
 
-class FileSorting:
 
+class FileSorting:
     def __init__(self, directory: str = ..., filetype: str = ...):
         """Class object for filtering and sorting files in a specific directory.
 
@@ -50,44 +51,47 @@ class FileSorting:
         return glob.glob(os.path.join(directory, filetype), **kwargs)
 
 
+def mkdir(*paths: str, display: bool = False):
+    """Makes directory if it does not exist.
 
-    def mkdir(*paths: str, display: bool = False):
-        """Makes directory if it does not exist.
+    Args:
+        paths (list): enter enter each individual arguments for each path (i.e., "path1", "path1", etc.)
+        display (bool, optional): option to print its creation in terminal. Defaults to False.
+    """
+    for path in paths:
+        if not os.path.exists(path):
+            os.mkdir(path)
+            if display:
+                print(f"Directory created: {path}")
+        elif (os.path.exists(path) and display):
+            print('Directory already exists')
 
-        Args:
-            paths (list): enter enter each individual arguments for each path (i.e., "path1", "path1", etc.)
-            display (bool, optional): option to print its creation in terminal. Defaults to False.
-        """
 
-        for path in paths:
-            if not os.path.exists(path):
-                os.mkdir(path)
-                if display:
-                    print(f'Directory created {path}')
+def generate_unique_name(
+    filename: str = ...,
+    path: str = os.path.dirname(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    ),  # CWD
+    copy_pattern: str = "Run ",
+):
+    """Static function for producing updating enumeration of consecutive log files.
 
-    def generate_unique_name(
-        filename: str = ...,
-        path: str = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), # CWD
-        copy_pattern: str = 'Run '
-        ):
-        """Static function for producing updating enumeration of consecutive log files.
+    Args:
+        filename (str): original name of file. Defaults to ...
+        path (str, optional): defualt directory for saving log files. Defaults to os.path.dirname(os.path.dirname(os.path.abspath(__file__))).
+        copy_pattern (str): appended pattern. Defaults to "Run"
 
-		Args:
-			filename (str): original name of file. Defaults to ...
-			path (str, optional): defualt directory for saving log files. Defaults to os.path.dirname(os.path.dirname(os.path.abspath(__file__))).
-			copy_pattern (str): appended pattern. Defaults to "Run"
+    Returns:
+        str: filename with unique number identifier appended to original filename
+    """
+    # FIXME - fix rest argument for path
+    base_name, ext = os.path.splitext(filename)
+    unique_name, counter = filename, 1
+    while os.path.exists(os.path.join(path, unique_name)):
+        counter += 1
+        unique_name = f"{base_name} ({copy_pattern}{counter}){ext}"
 
-		Returns:
-			str: filename with unique number identifier appended to original filename
-		"""
-        # FIXME - fix rest argument for path
-        base_name, ext = os.path.splitext(filename)
-        unique_name, counter = filename, 1
-        while os.path.exists(os.path.join(path, unique_name)):
-            counter += 1
-            unique_name = f'{base_name} ({copy_pattern}{counter}){ext}'
-
-        return unique_name, counter
+    return unique_name, counter
 
 
 def fetch_all_files(parent_folder: str = ..., file_type: str = ...) -> List[str]:
@@ -100,4 +104,4 @@ def fetch_all_files(parent_folder: str = ..., file_type: str = ...) -> List[str]
     Returns:
         List of strings of absolute paths of every file that fits 'file_type.'
     """
-    return glob.glob(parent_folder + '/**/' + file_type, recursive=True)
+    return glob.glob(parent_folder + "/**/" + file_type, recursive=True)
