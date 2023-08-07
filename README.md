@@ -96,7 +96,7 @@ in your terminal (opened in your working directory). You can also simply use `cd
 
 If you do not have git downloaded and configured, the commands above will not work in your terminal. If this is the case, you can simply download the repository as a `.zip` file by clicking *Download Zip* in the green `<> Code` dropdown menu:
 
-![1689627172676](allMDcontent\image/README/1689627172676.png)
+![1689627172676](allMDcontent/image/README/1689627172676.png)
 
 # Issues and Collaboration
 
