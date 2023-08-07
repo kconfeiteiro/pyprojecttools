@@ -1,6 +1,6 @@
 # Introduction
 
-The purpose of this repository is just to include all of the small functions I use for multiple projects. Having them here allows me to simply clone the repository rather than copying the code for each project. This repository is a work in progress and I will be adding whichever functions I find are useful. As this repository grows, I will improve on its organization, as it was thrown together relatively quickly, so its organization is questionable, at best. Explore all the functions in the `Utils` directory.
+PyProjectTools is a powerful open-source toolkit that streamlines Python project development. It offers essential utilities and efficient workflows for projects of all sizes, simplifying creation, organization, and management. From virtual environments and package management to testing and documentation, boost your productivity with PyProjectTools. This repository will be continuously maintained by its owner, including documentation, and staying up to date with used libraries. Collaboration and additional contributions are welcome and encouraged!
 
 ## Disclaimer
 The code in this repository was written using version `Python 3.11.4`, meaning, there might be compatibility issues with older Python versions. You can download version 3.11.4 [here](https://www.python.org/downloads/windows/).
