@@ -1,15 +1,45 @@
-# Introduction
+# 1. Contents
+- [1. Contents](#1-contents)
+- [2. Introduction](#2-introduction)
+- [3. Disclaimer](#3-disclaimer)
+- [4. Usage](#4-usage)
+  - [4.1. Pip Packages](#41-pip-packages)
+  - [4.2. Calling Functions](#42-calling-functions)
+    - [4.2.1. Working Example](#421-working-example)
+  - [4.3. Cloning \& Updating](#43-cloning--updating)
+    - [4.3.1. Pull requests](#431-pull-requests)
+    - [4.3.2. Additional Tools](#432-additional-tools)
+- [5. Issues and Collaboration](#5-issues-and-collaboration)
 
-PyProjectTools is a powerful open-source toolkit that streamlines Python project development. It offers essential utilities and efficient workflows for projects of all sizes, simplifying creation, organization, and management. From virtual environments and package management to testing and documentation, boost your productivity with PyProjectTools. This repository will be continuously maintained by its owner, including documentation, and staying up to date with used libraries. Collaboration and additional contributions are welcome and encouraged!
 
-## Disclaimer
+# 2. Introduction
+
+PyProjectTools is a powerful open-source toolkit for Python project development. It offers essential utilities and efficient workflows for projects of all sizes, simplifying creation, organization, and management. From virtual environments and package management to testing and documentation. This repository will be continuously maintained by its owner. Collaboration and additional contributions are welcome and encouraged!
+
+This repository includes tools for:
+
+- [Saving data to Excel files, JSON files, and text files](FileTools/FileDataHandeling.py)
+- [Parsing directories](FileTools/FileSorting.py)
+- [Application monitoring](/ApplicationMonitoring/)
+  - Linting
+  - Logging
+  - Line profiling
+  - Memory profiling
+- [Automatically formatted dates](/Helpers/Dates.py)
+- [Custom datatypes (pending)](/CustomDatatypes/)
+- [Batch files](/useful_batch_scripts/)
+  - Extracting data from tar files (`.tar.gz`)
+  - Cloning this repository
+  - Auto-updating (pulling) from this repository
+
+# 3. Disclaimer
 The code in this repository was written using version `Python 3.11.4`, meaning, there might be compatibility issues with older Python versions. You can download version 3.11.4 [here](https://www.python.org/downloads/windows/).
 
-# Usage
+# 4. Usage
 
 All you need to do to use the functions is clone the repository locally by typing
 
-```
+```cmd
 git clone https://github.com/kconfeiteiro/PyProjectTools
 ```
 in your `cmd` (opened in your working directory). Then, you can call functions from the `PyProjectUtils` directory.
@@ -22,11 +52,11 @@ clonePyProjectTools.bat
 in your terminal. Or, click the icon for the `.bat` file from your computer's native file explorer.
 
 
-## Pip Packages
+## 4.1. Pip Packages
 
  If you are missing `pip` packages, do not forget to install the `requirements.txt` using the terminal command
 
-```
+```cmd
 py -m pip install -r requirements.txt
 ```
 
@@ -38,11 +68,11 @@ cd PyProjectTools & py -m pip install -r requirements.txt & cd ..
 
 which will change your directory to that of the registry, then `cd ..` will automatically return you to your working directory.
 
-## Calling Functions
+## 4.2. Calling Functions
 
 The layout of the directory is (after its cloned)
 
-```
+```cmd
 < Your working directory >
    |   main.py
    └─── PyProjectUtils
@@ -69,20 +99,21 @@ from PyProjectUtils.Utils.Tools import Tools
 
 Note that if you make changes to the cloned repository, they will not be reflected on GitHub.
 
-### Working Example
+### 4.2.1. Working Example
 
 ```py
 # import the class 'Directories' from the FileSorting script
-from PyProjectUtils.Utils.FileSorting import Directories as dr
+from PyProjectUtils.FileTools.FileSorting import mkdir
 
 # call function from the imported class
 filepath = 'example/path/to/dir'
-dr.mkdir(filepath)
+mkdir(filepath)
 ```
 
-where the function `dr.mkdir()` creates a directory if it does not exist.
+where the function `mkdir()` creates a directory if it does not exist.
 
-## Pull requests
+## 4.3. Cloning & Updating
+### 4.3.1. Pull requests
 
 Pull requests are automatically completed. To pull new changes, use the command
 
@@ -92,12 +123,20 @@ cd PyProjectTools & git pull https://github.com/kconfeiteiro/PyProjectTools & cd
 
 in your terminal (opened in your working directory). You can also simply use `cd PyProjectTools & git pull & cd ..`
 
-### Git not Downloaded
 
 If you do not have git downloaded and configured, the commands above will not work in your terminal. If this is the case, you can simply download the repository as a `.zip` file by clicking *Download Zip* in the green `<> Code` dropdown menu:
 
-![1689627172676](allMDcontent/image/README/1689627172676.png)
+![.zip file download window](allMDcontent/image/README/1689627172676.png)
 
-# Issues and Collaboration
+### 4.3.2. Additional Tools
+
+In `useful_batch_scrips` ([link](https://github.com/kconfeiteiro/PyProjectTools/tree/main/useful_batch_scripts)), you can find two scrips:
+
+1. `clonePyProjectTools.bat`
+   - Clones the latest version of the repository. Particularly useful if you are working on multiple projects.
+2. `update.bat`
+   - Pulls from remote repository automatically. No `git` commands neeed.
+
+# 5. Issues and Collaboration
 
 If there are any issues, bugs, or broken functions feel free to contact confeitk@outlook.com. Or, if you would like to add your own functions, feel free to fork the repository!

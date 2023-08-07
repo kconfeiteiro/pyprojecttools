@@ -50,7 +50,6 @@ class FileSorting:
         return glob.glob(os.path.join(directory, filetype), **kwargs)
 
 
-class Directories:
 
     def mkdir(*paths: str, display: bool = False):
         """Makes directory if it does not exist.
@@ -91,16 +90,14 @@ class Directories:
         return unique_name, counter
 
 
-class FileFetching:
+def fetch_all_files(parent_folder: str = ..., file_type: str = ...) -> List[str]:
+    """Fetches all files recursively in a desired directory and all its subdirectories.
 
-    def fetch_all_files(parent_folder: str = ..., file_type: str = ...) -> List[str]:
-        """Fetches all files recursively in a desired directory and all its subdirectories.
+    Args:
+        parent_folder (str, optional): path to folder you want to parse. Defaults to ....
+        file_type (str, optional): file extension you are searching for. Defaults to ....
 
-        Args:
-            parent_folder (str, optional): path to folder you want to parse. Defaults to ....
-            file_type (str, optional): file extension you are searching for. Defaults to ....
-
-        Returns:
-            List of strings of absolute paths of every file that fits 'file_type.'
-        """
-        return glob.glob(parent_folder + '/**/' + file_type, recursive=True)
+    Returns:
+        List of strings of absolute paths of every file that fits 'file_type.'
+    """
+    return glob.glob(parent_folder + '/**/' + file_type, recursive=True)
