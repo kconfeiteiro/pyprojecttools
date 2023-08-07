@@ -8,47 +8,18 @@ from typing import (
 """ Sorting, deleting, copying files, and dealing with directories """
 
 
-class FileSorting:
-    def __init__(self, directory: str = ..., filetype: str = ...):
-        """Class object for filtering and sorting files in a specific directory.
+def delete_filetype(folder: str = ..., *filetypes: str):
+    """Deletes files of specific type
 
-        Args:
-            directory (str, optional): target directory. Defaults to ....
-            filetype (str, optional): target filetype. Defaults to ....
-        """
-        self.directory = directory
-        self.directory_list = os.listdir(self.directory)
-        self.filetype = filetype
-
-    def delete_filetype(folder: str = ..., *filetypes: str):
-        """Deletes files of specific type
-
-        Args:
-            folder (str, optional): target directory. Defaults to ....
-        """
-        directory = os.listdir(folder)
-        removed = []
-        for file in directory:
-            file = os.path.join(folder, file)
-            if file.split(".")[-1] in filetypes:
-                removed.append(file)
-                os.remove(file)
-
-    @classmethod
-    def filter(cls, directory: str = None, filetype: str = ..., **kwargs):
-        """Filters target directory based on filetype. Can be used statically or as object method. Adding 'recursive=True' as an additional kwarg will enable it to search within subdirectories.
-
-        Args:
-            directory (str, optional): target directory. Defaults to None.
-            filetype (str, optional): target filetype. Defaults to ....
-
-        Returns:
-           List of all the absolute file paths for all matching files
-        """
-        if directory is None:
-            directory = cls.directory
-
-        return glob.glob(os.path.join(directory, filetype), **kwargs)
+    Args:
+        folder (str, optional): target directory. Defaults to ....
+    """
+    directory, removed = os.listdir(folder), []
+    for file in directory:
+        file = os.path.join(folder, file)
+        if file.split(".")[-1] in filetypes:
+            removed.append(file)
+            os.remove(file)
 
 
 def mkdir(*paths: str, display: bool = False):
@@ -63,8 +34,8 @@ def mkdir(*paths: str, display: bool = False):
             os.mkdir(path)
             if display:
                 print(f"Directory created: {path}")
-        elif (os.path.exists(path) and display):
-            print('Directory already exists')
+        elif os.path.exists(path) and display:
+            print("Directory already exists")
 
 
 def generate_unique_name(
@@ -94,7 +65,7 @@ def generate_unique_name(
     return unique_name, counter
 
 
-def fetch_all_files(parent_folder: str = ..., file_type: str = ...) -> List[str]:
+def filter(parent_folder: str = ..., file_type: str = ...) -> List[str]:
     """Fetches all files recursively in a desired directory and all its subdirectories.
 
     Args:
