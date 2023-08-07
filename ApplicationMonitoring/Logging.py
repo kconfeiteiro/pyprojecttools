@@ -56,7 +56,7 @@ class LoggerBackend:
 		return cls._instance
 
 	@staticmethod
-	def generate_unique_name( # TODO - Make 'path' an input on GUI startup
+	def generate_unique_name( 
 		filename: str = ...,
 		path: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__))), # CWD
 		copy_pattern: str = 'Run'

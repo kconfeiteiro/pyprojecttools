@@ -1,3 +1,5 @@
+aspectlib==2.0.0
+fields==5.0.0
 num2word==1.0.1
 numpy==1.25.1
 pandas==2.0.3

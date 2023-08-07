@@ -2,6 +2,7 @@ import json
 import os
 from typing import Any, Dict, List, Literal, Union
 
+
 ''' For anything realated to reading data from file or directory '''
 
 class FileReading:
@@ -32,6 +33,7 @@ class FileReading:
         with open(filename, *args, **kwargs) as f:
             return json.load(f)
 
+
 class FileWriting:
 
     def write_txt(
@@ -60,4 +62,3 @@ class FileWriting:
                     file.write("\n")
             else:
                 file.write(content)
-
