@@ -72,7 +72,7 @@ which will change your directory to that of the registry, then `cd ..` will auto
 
 The layout of the directory is (after its cloned)
 
-```cmd
+```
 < Your working directory >
    |   main.py
    └─── PyProjectUtils
@@ -102,15 +102,15 @@ Note that if you make changes to the cloned repository, they will not be reflect
 ### 4.2.1. Working Example
 
 ```py
-# import the class 'Directories' from the FileSorting script
+# import the function 'mkdir' from the FileSorting script
 from PyProjectUtils.FileTools.FileSorting import mkdir
 
-# call function from the imported class
+# call function from imported script
 filepath = 'example/path/to/dir'
 mkdir(filepath)
 ```
 
-where the function `mkdir()` creates a directory if it does not exist.
+where the function `mkdir()`, creates a directory if it does not exist. Calling static functions and classes require the same import syntax.
 
 ## 4.3. Cloning & Updating
 ### 4.3.1. Pull requests
