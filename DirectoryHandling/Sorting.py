@@ -2,13 +2,14 @@ import glob
 import os
 from typing import (
     List,
+    Tuple,
 )
 
 
 """ Sorting, deleting, copying files, and dealing with directories """
 
 
-def delete_filetype(folder: str = ..., *filetypes: str):
+def delete_filetype(folder: str = ..., *filetypes: str) -> None:
     """Deletes files of specific type
 
     Args:
@@ -22,7 +23,7 @@ def delete_filetype(folder: str = ..., *filetypes: str):
             os.remove(file)
 
 
-def mkdir(*paths: str, display: bool = False):
+def mkdir(*paths: str, display: bool = False) -> None:
     """Makes directory if it does not exist.
 
     Args:
@@ -44,7 +45,7 @@ def unique(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     ),  # CWD
     copy_pattern: str = "Run ",
-):
+) -> Tuple[str, int]:
     """Produces updating enumeration of consecutive file names
 
     Args:
@@ -76,3 +77,12 @@ def filter(parent_folder: str = ..., file_type: str = ...) -> List[str]:
         List of strings of absolute paths of every file that fits 'file_type.'
     """
     return glob.glob(parent_folder + "/**/" + file_type, recursive=True)
+
+
+def join(*paths: str) -> str:
+    """Joins paths
+
+    Returns:
+        str: joined paths
+    """
+    return os.path.join(*paths)

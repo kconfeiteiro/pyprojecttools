@@ -8,12 +8,12 @@ from typing import (
 
 import pandas as pd
 
-from CustomDatatypes.TabularDataStructures import Dataframe
+from Datatypes.Tabular import Dataframe
 
-""" for anything related to saving data (in any format)"""
+""" Saving all kinds of data """
 
 
-def build_xl(
+def write_to_excel(
     save_as: str = ...,
     df: Union[Dataframe, List[Dataframe]] = ...,
     sheetname: Union[str, List[str]] = "Main",
