@@ -29,7 +29,7 @@ def build_xl(
         index (bool, optional): option to write the index of each dataframe. Defaults to False.
     """
     with pd.ExcelWriter(save_as) as writer:
-        if type(sheetname) == list:
+        if isinstance(sheetname, list):
             for data, sheetname in zip(df, sheetname):
                 data.to_excel(writer, sheet_name=sheetname, index=index, **kwargs)
         else:
@@ -52,7 +52,7 @@ def write_to_txt(
         mode (literal, optional): write mode for ExcelWriter. Defaults to 'w'.
     """
     with open(save_as, mode=mode, **kwargs) as file:
-        if type(lines) == str:
+        if isinstance(lines, str):
             file.write(lines)
         else:
             for line in lines:

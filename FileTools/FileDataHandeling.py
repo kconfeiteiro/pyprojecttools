@@ -56,7 +56,7 @@ def write_txt(
             "Content is of wrong format, needs to be string or list of string",
         )
 
-        if type(content) == list:
+        if isinstance(content, list):
             for line in content:
                 file.write(line)
                 file.write("\n")
