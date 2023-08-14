@@ -1,6 +1,7 @@
 # 1. Contents
 - [1. Contents](#1-contents)
 - [2. Introduction](#2-introduction)
+    - [Present Selection of Tools:](#present-selection-of-tools)
 - [3. Disclaimer](#3-disclaimer)
 - [4. Usage](#4-usage)
   - [4.1. Pip Packages](#41-pip-packages)
@@ -14,23 +15,24 @@
 
 # 2. Introduction
 
-PyProjectTools is a powerful open-source toolkit for Python project development. It offers essential utilities and efficient workflows for projects of all sizes, simplifying creation, organization, and management. From virtual environments and package management to testing and documentation. This repository will be continuously maintained by its owner. Collaboration and additional contributions are welcome and encouraged!
+`PyProjectTools` is a powerful open-source toolkit for Python project development. It offers essential utilities and efficient workflows for projects of all sizes, simplifying creation, organization, and management. From virtual environments and package management to testing and documentation. `PyProjectTools` offers helper functions, helper libraries, a collection of custom datatypes for type hinting, and more. Collaboration and additional contributions are welcome and encouraged!
 
-This repository includes tools for:
+This repository will be continuously maintained by its owner. If there are any issues, please contact [confeitk@outlook.com](mailto:confeitk@outlook.com).
+
+### Present Selection of Tools:
 
 - [Saving data to Excel files, JSON files, and text files](FileTools/FileDataHandeling.py)
 - [Parsing directories](FileTools/FileSorting.py)
 - [Application monitoring](/ApplicationMonitoring/)
-  - Linting
-  - Logging
-  - Line profiling
-  - Memory profiling
-- [Automatically formatted dates](/Helpers/Dates.py)
-- [Custom datatypes (pending)](/CustomDatatypes/)
+  - Line profiling, memory profiling, linting, logging, etc.
+- [Commonly used string formats](/Static/)
+  - [Pre-formatted dates](/Static/Dates.py)
+- [Custom datatypes](/Datatypes/)
+  - [Tabular data structures](Datatypes/Tabular.py)
 - [Batch files](/useful_batch_scripts/)
   - Extracting data from tar files (`.tar.gz`)
-  - Cloning this repository
-  - Auto-updating (pulling) from this repository
+  - Cloning `PyProjectTools` for ease-of-use in other projects
+  - Auto-updating `PyProjectTools`
 
 # 3. Disclaimer
 The code in this repository was written using version `Python 3.11.4`, meaning, there might be compatibility issues with older Python versions. You can download version 3.11.4 [here](https://www.python.org/downloads/windows/).
@@ -42,7 +44,7 @@ All you need to do to use the functions is clone the repository locally by typin
 ```cmd
 git clone https://github.com/kconfeiteiro/PyProjectTools
 ```
-in your `cmd` (opened in your working directory). Then, you can call functions from the `PyProjectUtils` directory.
+in your `cmd` (opened in your working directory). Then, you can call functions from the `PyProjectTools` directory.
 
 For future use, `clonePyProjectTools.bat` has been added to ease the cloning process for multiple projects. The URL does not change, so this can be used as long as need. To run the batch file, simply type
 
@@ -139,4 +141,4 @@ In `useful_batch_scrips` ([link](https://github.com/kconfeiteiro/PyProjectTools/
 
 # 5. Issues and Collaboration
 
-If there are any issues, bugs, or broken functions feel free to contact confeitk@outlook.com. Or, if you would like to add your own functions, feel free to fork the repository!
+If there are any issues, bugs, or broken functions feel free to contact confeitk@outlook.com. Or, if you would like to contribute, feel free to fork the repository!
