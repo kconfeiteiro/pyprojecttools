@@ -38,14 +38,14 @@ def mkdir(*paths: str, display: bool = False):
             print("Directory already exists")
 
 
-def generate_unique_name(
+def unique(
     filename: str = ...,
     path: str = os.path.dirname(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     ),  # CWD
     copy_pattern: str = "Run ",
 ):
-    """Static function for producing updating enumeration of consecutive log files.
+    """Produces updating enumeration of consecutive file names
 
     Args:
         filename (str): original name of file. Defaults to ...

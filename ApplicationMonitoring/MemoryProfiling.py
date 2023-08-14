@@ -1,4 +1,3 @@
-
 from typing import (Any, Callable, Dict, List, Literal, NewType, Tuple, Type,
                     TypeVar, Union)
 
@@ -14,7 +13,6 @@ class MemoryProfiler:
 		func: Callable = ...,
 		memory_profiler: Callable = memory_profile(),
 		log_filename: str = ...
-
 	):
 		"""Function decorator for memory profiling
 

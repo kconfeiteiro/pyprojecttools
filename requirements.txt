@@ -1,8 +1,11 @@
 aspectlib==2.0.0
 fields==5.0.0
+line-profiler==4.0.3
+memory-profiler==0.61.0
 num2word==1.0.1
 numpy==1.25.1
 pandas==2.0.3
+psutil==5.9.5
 python-dateutil==2.8.2
 pytz==2023.3
 six==1.16.0
