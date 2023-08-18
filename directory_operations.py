@@ -39,7 +39,7 @@ def mkdir(*paths: str, display: bool = False) -> None:
             print("Directory already exists")
 
 
-def unique(
+def unique_filename(
     filename: str = ...,
     path: str = os.path.dirname(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -66,7 +66,7 @@ def unique(
     return unique_name, counter
 
 
-def filter(parent_folder: str = ..., file_type: str = ...) -> List[str]:
+def filter_files(parent_folder: str = ..., file_type: str = ...) -> List[str]:
     """Fetches all files recursively in a desired directory and all its subdirectories.
 
     Args:
