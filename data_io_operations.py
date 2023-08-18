@@ -7,7 +7,7 @@ from typing import Any, Dict, List, Literal, Sequence, Tuple, Union
 import num2word
 import pandas as pd
 
-from Datatypes.Tabular import Dataframe
+from pyprojecttools.custom_dtypes import Dataframe
 
 """ Data I/O operations (reading, saving, etc.) """
 
