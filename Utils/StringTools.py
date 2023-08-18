@@ -1,10 +1,11 @@
 import ast
+import re
 from typing import Any, Dict, List, Tuple
 
 import num2word
 
 
-''' Helper fuctions for strings operations '''
+""" Helper fuctions for strings operations/manipulation """
 
 
 def numToWord(num: int = ...) -> str:
@@ -65,3 +66,40 @@ def parse_kwarg_string(kwargs_string: str = ...) -> Dict[str, Any]:
             value = value.strip("'")
         kwargs_dict[keyword] = value
     return kwargs_dict
+
+
+def strmatch(pattern: str = ..., string: str = ..., **kwargs) -> bool:
+    """Static method for determining if a string matches a Regex pattern
+
+    Args:
+        pattern (str, optional): pattern to match to. Defaults to ....
+        string (str, optional): string you are matching. Defaults to ....
+
+    Returns:
+        bool: returns True if it matches, False if it doesn't
+    """
+    return bool(re.search(pattern, string, **kwargs))
+
+
+def make_vec_comp_names(
+    vector_types: list = None, components: list = None
+) -> List[str]:
+    """Creates list of vector components for desired vectors for easier automated plotting.
+
+    Args:
+        vector_types (list, optional): letter denotion of vector (i.e., "B', "V", etc.). Defaults to None.
+        components (list, optional): chosen vector componenets (i.e., "x", "y", "y"). Defaults to None.
+
+    Returns:
+        List[str]: list of strings for corresponding vector components
+
+    Example:
+        >>> vector_types = ['position', 'velocity']
+        >>> components = ['x', 'y', 'z']
+        >>> output = make_vec_comp_names(vector_types, components)
+        >>> print(output)
+        >>> ['POSITION_x', 'POSITION_y', 'POSITION_z', 'VELOCITY_x', 'VELOCITY_y', 'VELOCITY_z']
+    """
+    return [
+        f"{vec.upper()}_{axis.lower()}" for vec in vector_types for axis in components
+    ]
