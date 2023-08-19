@@ -7,19 +7,19 @@ from typing import Any, Dict, List, Literal, Sequence, Tuple, Union
 import num2word
 import pandas as pd
 
-from pyprojecttools.custom_dtypes import Dataframe
+from customtyping import Dataframe
 
 """ Data I/O operations (reading, saving, etc.) """
 
 
 def write_to_excel(
     save_as: str = ...,
-    df: Union[Dataframe, List[Dataframe]] = ...,
-    sheetname: Union[str, List[str]] = "Main",
+    df: Dataframe | List[Dataframe] = ...,
+    sheetname: str | List[str] = "Main",
     index: bool = False,
     **kwargs,
 ):
-    """Builds an Microsoft Excel file from single or multiple Pandas dataframes. In the latter case, it will create separate pages for each dataframe
+    """Builds an Microsoft Excel file from single or multiple Pandas dataframes. In the latter case, it will create separate pages for each dataframe.
 
     Args:
         save_as (str, optional): what you want to name the saved file. Defaults to ....
@@ -34,16 +34,14 @@ def write_to_excel(
         else:
             df.to_excel(writer, sheet_name=sheetname, index=index, **kwargs)
 
-    print(f"File has been written to {save_as}")
-
 
 def write_to_txt(
     save_as: str = ...,
-    lines: Union[str, List[str]] = ...,
+    lines: str | List[str] = ...,
     mode: Literal["w", "wb", "a"] = "w",
     **kwargs,
 ):
-    """Writes string or list of strings to a text file
+    """Writes string or list of strings to a text file.
 
     Args:
         save_as (str, optional): name to save file as. Defaults to ....
@@ -57,8 +55,6 @@ def write_to_txt(
             for line in lines:
                 file.write(line)
         file.close()
-
-    print(f"File has been written to {save_as}")
 
 
 def write_to_json(
@@ -77,13 +73,11 @@ def write_to_json(
     with open(save_as, mode) as file:
         json.dump(dict_to_save, file, **kwargs)
 
-    print(f"File has been written to {save_as}")
-
 
 def read_txt(
     filename: str = ..., mode: Literal["r", "rb"] = "r", **kwargs
 ) -> List[str]:
-    """Reads text file
+    """Reads text file. Returns None if path does not exist.
 
     Args:
         filename (str, optional): file name to read. Defaults to ....
@@ -93,11 +87,11 @@ def read_txt(
         list: returns list of strings of line read
     """
     with open(filename, mode=mode, **kwargs) as file:
-        return file.readlines()
+        return file.readlines() if os.path.exists(filename) else None
 
 
 def read_json(filename: str = ..., *args, **kwargs) -> Dict[Any, Any]:
-    """Reads JSON file
+    """Reads JSON file. Returns None if path does not exist.
 
     Args:
         filename (str, optional): name of JSON file to read. Defaults to ....
@@ -105,37 +99,8 @@ def read_json(filename: str = ..., *args, **kwargs) -> Dict[Any, Any]:
     Returns:
         dictionary: returns read JSON data
     """
-    assert os.path.exists(filename), "File not found"
     with open(filename, *args, **kwargs) as f:
-        return json.load(f)
-
-
-def write_txt(
-    save_as: str = ...,
-    content: Union[str, List[str]] = ...,
-    mode: Literal["w", "wb"] = "w",
-    *args,
-    **kwargs,
-):
-    """Writes str or list of strings to a text file
-
-    Args:
-        save_as (str, optional): name of saved file. Defaults to ....
-        content (Union[str, List[str]], optional): list or list of strings to write. Defaults to ....
-        mode (literal, optional): writing mode. Defaults to "w".
-    """
-    with open(save_as, mode, *args, **kwargs) as file:
-        assert (
-            type(content) in [list, List[str]],
-            "Content is of wrong format, needs to be string or list of string",
-        )
-
-        if isinstance(content, list):
-            for line in content:
-                file.write(line)
-                file.write("\n")
-        else:
-            file.write(content)
+        return json.load(f) if os.path.exists(filename) else None
 
 
 def pull_columns(data: Any = None, *cols, as_tuple: bool = False) -> Union[List, Tuple]:

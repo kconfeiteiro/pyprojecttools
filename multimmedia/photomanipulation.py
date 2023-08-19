@@ -1,4 +1,4 @@
-import glob
+from glob import glob
 from typing import Literal
 
 from PIL import Image
@@ -26,7 +26,7 @@ class GIF:
             loop (int, optional): option to loop gif a limited amount of times. Defaults to 0.
         """
         images = [
-            Image.open(image) for image in glob.glob(f"{frame_dir}/*.{frame_type}")
+            Image.open(image) for image in glob(f"{frame_dir}/*.{frame_type}")
         ]
 
         first_frame = images[0]

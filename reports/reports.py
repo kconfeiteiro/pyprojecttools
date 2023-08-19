@@ -12,7 +12,7 @@ from pylatex import (
 )
 
 from custom_str_templates import LongDateFormat
-from reportgenerator.reportelements import Section, Subsection, Subsubsection
+from reports.reportelements import Section, Subsection, Subsubsection
 
 
 """ For building PDF reports (in LaTeX) """
