@@ -6,15 +6,15 @@ from typing import Any, Dict, List, Literal, Sequence, Tuple, Union
 
 import num2word
 import pandas as pd
+from pandas import DataFrame
 
-from customtyping import pdDataFrame as Dataframe
 
 """ Data I/O operations (reading, saving, etc.) """
 
 
 def write_to_excel(
     save_as: str = ...,
-    df: Dataframe | List[Dataframe] = ...,
+    df: DataFrame | List[DataFrame] = ...,
     sheetname: str | List[str] = "Main",
     index: bool = False,
     **kwargs,
@@ -23,7 +23,7 @@ def write_to_excel(
 
     Args:
         save_as (str, optional): what you want to name the saved file. Defaults to ....
-        df (Dataframe, optional): single dataframe or list of dataframes you want to write to file. Defaults to ....
+        df (DataFrame, optional): single dataframe or list of dataframes you want to write to file. Defaults to ....
         sheetname (Union[str, List], optional): name or list of names you want to name each excel sheet page. Defaults to 'Main'.
         index (bool, optional): option to write the index of each dataframe. Defaults to False.
     """

@@ -1,17 +1,9 @@
 from enum import Enum
-from typing import Literal, Type, NamedTuple
+from typing import Literal, NamedTuple
 
-from pandas import DataFrame, Series
-from numpy import array
 
 """ Custom data type that fits the 'tabular data' structure """
 
-# pandas dataframe
-pdDataFrame = Type[DataFrame]
-pdSeries = Type[Series]
-npArray = Type[array]
-
-# coding related
 codinglanguage = Literal[
     "python", "javascript", "html", "css", "java", "c", "c++", "c#", "matlab"
 ]
