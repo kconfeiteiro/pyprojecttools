@@ -7,14 +7,14 @@ from typing import Any, Dict, List, Literal, Sequence, Tuple, Union
 import num2word
 import pandas as pd
 
-from customtyping import pdDataFrame
+from customtyping import pdDataFrame as Dataframe
 
 """ Data I/O operations (reading, saving, etc.) """
 
 
 def write_to_excel(
     save_as: str = ...,
-    df: pdDataFrame | List[pdDataFrame] = ...,
+    df: Dataframe | List[Dataframe] = ...,
     sheetname: str | List[str] = "Main",
     index: bool = False,
     **kwargs,
