@@ -5,8 +5,8 @@ from PIL import Image
 
 """ Utilities """
 
-class GIF:
 
+class GIF:
     def make_gif(
         frame_dir: str = ...,
         frame_type: Literal["jpg", "png"] = "jpg",
@@ -14,7 +14,7 @@ class GIF:
         duration: int = 100,
         loop: int = 0,
         *args,
-        **kwargs
+        **kwargs,
     ):
         """Static function for creating savable based on images in a directory
 
@@ -38,5 +38,5 @@ class GIF:
             duration=duration,
             loop=loop,
             *args,
-            **kwargs
+            **kwargs,
         )

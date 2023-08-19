@@ -1,5 +1,4 @@
-from typing import (Any, Callable, Dict, List, Literal, NewType, Tuple, Type,
-                    TypeVar, Union)
+from typing import (Callable)
 
 from memory_profiler import profile as memory_profile
 

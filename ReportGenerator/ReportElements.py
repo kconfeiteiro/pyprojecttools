@@ -1,29 +1,34 @@
-from abc import (ABC, abstractclassmethod, abstractmethod, abstractproperty,
-				 abstractstaticmethod)
-from datetime import datetime
-from typing import (Any, Callable, Dict, List, Literal, NewType, Tuple, Type,
-					TypeVar, Union)
+from abc import (
+    ABC,
+    abstractmethod,
+)
 
-from pylatex import (Alignat, Axis, Document, Figure, Foot, Head, LargeText,
-					 LineBreak, Math, Matrix, MediumText, MiniPage, NewPage,
-					 PageStyle, Plot, Section, Subsection, Subsubsection,
-					 Tabular, TikZ, simple_page_number, Tabular, Command)
-from pylatex.utils import italic, NoEscape
+from pylatex import (
+    Document,
+    Figure,
+    Section,
+    Subsection,
+    Subsubsection,
+    Tabular,
+    Tabular,
+    Command,
+)
+from pylatex.utils import NoEscape
 from pandas import DataFrame
 
-from Helpers.Dates import LongDateFormat
+from custom_str_templates import LongDateFormat
 
 
 """ Houses abstract classes and class elements for generated reports """
 
-class ReportBase(ABC):
 
+class ReportBase(ABC):
     def __init__(
         self,
         doc: Document = None,
         title: str = None,
         author: str = None,
-        date: str = None
+        date: str = None,
     ) -> None:
         """Base class for subsequent report "generator" classes
 
@@ -38,9 +43,9 @@ class ReportBase(ABC):
         self.author = author
         self.date = date if date else LongDateFormat
 
-        self.doc.preamble.append(Command('author', self.author))
-        self.doc.preamble.append(Command('date', NoEscape(self.date)))
-        self.doc.append(NoEscape(r'\maketitle'))
+        self.doc.preamble.append(Command("author", self.author))
+        self.doc.preamble.append(Command("date", NoEscape(self.date)))
+        self.doc.append(NoEscape(r"\maketitle"))
 
         self.num_sections = 0
         self.num_ssections = 0
@@ -61,7 +66,9 @@ class ReportBase(ABC):
         """
         pass
 
-    def add_image(self, image_path: str = ..., caption: str = ..., width: int = None) -> None:
+    def add_image(
+        self, image_path: str = ..., caption: str = ..., width: int = None
+    ) -> None:
         """Adds image to document report
 
         Args:
@@ -69,7 +76,7 @@ class ReportBase(ABC):
             caption (str, optional): caption for image. Defaults to ....
             width (int, optional): width of image (in pixels). Defaults to None.
         """
-        with self.doc.create(Figure(position='h!')) as fig:
+        with self.doc.create(Figure(position="h!")) as fig:
             fig.add_image(image_path, width=f"{width.strip('.pdf')}")
             fig.add_caption(caption)
 
@@ -80,15 +87,15 @@ class ReportBase(ABC):
             dataframe (DataFrame, optional): _description_. Defaults to None.
             caption (str, optional): _description_. Defaults to ....
         """
-        with self.doc.create(Section('Table')):
-            with self.doc.create(Tabular('c' * len(dataframe.columns))) as table:
+        with self.doc.create(Section("Table")):
+            with self.doc.create(Tabular("c" * len(dataframe.columns))) as table:
                 table.add_hline()
                 table.add_row(dataframe.columns)
                 table.add_hline()
                 for _, row in dataframe.iterrows():
                     table.add_row(row)
                     table.add_hline()
-            self.doc.append(NoEscape(r'\caption{' + caption + '}'))
+            self.doc.append(NoEscape(r"\caption{" + caption + "}"))
 
     @property
     def sections(self):
@@ -107,7 +114,6 @@ class ReportBase(ABC):
 
 
 class Section(ReportBase):
-
     def __init__(self, doc: Document = None, title: str = ...) -> None:
         super().__init__(doc, title)
         self.section = self.doc.create(Section(title))
@@ -131,7 +137,6 @@ class Section(ReportBase):
 
 
 class Subsection(ReportBase):
-
     def __init__(self, doc: Document = None, title: str = ...) -> None:
         super().__init__(doc, title)
         self.subsection = self.doc.create(Subsection(title))
@@ -155,7 +160,6 @@ class Subsection(ReportBase):
 
 
 class Subsubsection(ReportBase):
-
     def __init__(self, doc: Document = None, title: str = ...) -> None:
         super().__init__(doc, title)
         self.subsubsection = self.doc.create(Subsubsection(title))

@@ -3,7 +3,7 @@ from typing import Any, List, Literal, MutableSequence, Tuple
 import sympy
 
 
-"""Anythign related to transformatiosn of any kind"""
+"""Anything related to transformatiosn of any kind"""
 
 
 def cart_to_polar(
