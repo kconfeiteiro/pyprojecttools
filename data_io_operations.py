@@ -282,3 +282,18 @@ def make_vec_comp_names(
     return [
         f"{vec.upper()}_{axis.lower()}" for vec in vector_types for axis in components
     ]
+
+
+def shorten_dataframe(data: DataFrame = None, percent: float = None) -> DataFrame:
+    """
+    Helper function to reduce number of rows in a `pd.DataFrame`.
+
+    Args:
+        data (DataFrame, optional): dataframe to shorten. Defaults to None.
+        percent (float, optional): decimal percentage of original DataFrame. Defaults to None.
+
+    Returns:
+        DataFrame: Returns `percent` percentage of original DataFrame.
+    """
+    shortened = int(data.shape[0] * percent)
+    return data.head(shortened) if data is not None else None

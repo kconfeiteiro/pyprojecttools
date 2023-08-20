@@ -30,11 +30,6 @@ pol2s = Literal["r", "phi"]
 rect3d = Literal["x", "y", "z"]
 sph3d = Literal["r", "phi", "theta"]
 
-# date|file|directory standalone types
-today = datetime.now()
-months = Literal[
-    "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC"
-]
 
 # Miscellaneous standalone types
 std_inputs = str | float | int
@@ -161,11 +156,11 @@ class Task(NamedTuple):
 
 
 class Range(NamedTuple):
-    """Range object.
+    """Range object. Step is optional.
 
     Properties:
-    - start (int|float, optional): range start value.
-    - end (int|float, optional): range end value.
+    - start (int|float): range start value.
+    - end (int|float): range end value.
     - step (int|float, optional): step of range. Defaults to None.
     """
 
