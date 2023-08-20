@@ -1,7 +1,8 @@
 from datetime import datetime
 from enum import Enum
-from typing import Literal, NamedTuple
+from typing import Literal, NamedTuple, TypeVar
 
+from sympy import Union
 
 """ Custom data type that fits the 'tabular data' structure """
 
@@ -11,6 +12,15 @@ codinglanguage = Literal[
     "python", "javascript", "html", "css", "java", "c", "c++", "c#", "matlab"
 ]
 scriptinglangauge = Literal["Batch", "PowerShell", "Git Bash", "CMD", "Ubuntu"]
+
+# math/physics related standalone types
+coord = int | float
+
+# date|file|directory standalone types
+today = datetime.now()
+months = Literal[
+    "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC"
+]
 
 # math/physics related standalone types
 coord = int | float
