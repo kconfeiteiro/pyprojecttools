@@ -24,8 +24,11 @@ months = Literal[
 
 # math/physics related standalone types
 coord = int | float
-cart_coords = Literal["x", "y", "z"]
-sph_coords = Literal["r", "phi", "theta"]
+rect2d = Literal["x", "y"]
+pol2s = Literal["r", "phi"]
+
+rect3d = Literal["x", "y", "z"]
+sph3d = Literal["r", "phi", "theta"]
 
 # date|file|directory standalone types
 today = datetime.now()
@@ -172,78 +175,115 @@ class Range(NamedTuple):
 
 
 class OrderedPair(NamedTuple):
-    """Ordered pair object (of two).
+    """Ordered pair object (of two). All default to `None` to allow for any combination.
 
     Properties:
-    - first (int|float|str): first property.
-    - second (int|float|str): second property.
+    - first (int|float|str, optional): first property. Defaults to None.
+    - second (int|float|str, optional): second property. Defaults to None.
+
+    Also see:
+    - `OrderedTriple`
+    - `RectCoords`
+    - `SphCoords`
+    - `PolarCoords`
+    - `Location`
     """
 
-    first: std_inputs
-    second: std_inputs
+    first: std_inputs = None
+    second: std_inputs = None
 
 
 class OrderedTriple(NamedTuple):
-    """Ordered pair object (of three).
+    """Ordered pair object (of three). All default to `None` to allow for any combination.
 
-    Properties:
-    - first (int|float|str): first property.
-    - second (int|float|str): second property.
-    - third (int|float|str): third (last) property.
+    Properties`:`
+    - first (int|float|str, optional): first property. Defaults to None.
+    - second (int|float|str, optional): second property. Defaults to None.
+    - third (int|float|str, optional): third (last) property. Defaults to None.
+
+    Also see:
+    - `OrderedPair`
+    - `RectCoords`
+    - `SphCoords`
+    - `PolarCoords`
+    - `Location`
     """
 
-    first: std_inputs
-    second: std_inputs
-    third: std_inputs
+    first: std_inputs = None
+    second: std_inputs = None
+    third: std_inputs = None
 
 
-class CartCoords(NamedTuple):
-    """Ordered triple object for cartesian coordinates. If you want a more general object for tuples, see `OrderedPair` and `OrderedTriple`.
+class RectCoords(NamedTuple):
+    """Ordered triple object for cartesian coordinates. If you want a more general object for tuples, see `OrderedPair` and `OrderedTriple`. All default to None to allow for any combination of coordinates.
 
     Properties:
-    - x (int|float): x-coordinate.
-    - y (int|float): y-coordinate.
-    - z (int|float): z-coordinate.
+    - x (int|float, optional): x-coordinate. Defaults to None.
+    - y (int|float, optional): y-coordinate. Defaults to None.
+    - z (int|float, optional): z-coordinate. Defaults to None.
+
+    Also see:
+    - `OrderedPair`
+    - `SphCoords`
+    - `PolarCoords`
+    - `Location`
     """
 
-    x: coord
-    y: coord
-    z: coord
+    x: coord = None
+    y: coord = None
+    z: coord = None
 
 
 class SphCoords(NamedTuple):
-    """Ordered triple object for spherical coordinates. If you want a more general object for tuples, see `OrderedPair` and `OrderedTriple`.
+    """Ordered triple object for spherical coordinates. If you want a more general object for tuples, see `OrderedPair` and `OrderedTriple`. All default to `None` to allow for any combination of coordinates.
 
     Properties:
-    - r_mag (int|float): distance from origin (magnitude of position vector)
-    - phi (int|float): angle made from cartesian x-axis.
-    - theta (int|float): angle made from cartesian z-axis
+    - r_mag (int|float, optional): distance from origin (magnitude of position vector). Defaults to None.
+    - phi (int|float, optional): angle made from cartesian x-axis. Defaults to None.
+    - theta (int|float, optional): angle made from cartesian z-axis. Defaults to None.
+
+    Also see:
+    - `RectCoords`
+    - `PolarCoords`
+    - `Location`
     """
 
-    r_mag: coord
-    phi: coord
-    theta: coord
+    r_mag: coord = None
+    phi: coord = None
+    theta: coord = None
 
 
 class PolarCoords(NamedTuple):
-    """Ordered triple object for spherical coordinates. If you want a more general object for tuples, see `OrderedPair` and `OrderedTriple`.
+    """Ordered triple object for spherical coordinates. If you want a more general object for tuples, see `OrderedPair` and `OrderedTriple`. All default to None to allow for any combination.
 
     Properties:
-    - r_mag (int|float): distance from origin (magnitude of position vector)
-    - phi (int|float): angle made from cartesian x-axis.
+    - r_mag (int|float, optional): distance from origin (magnitude of position vector). Defaults to None.
+    - phi (int|float, optional): angle made from cartesian x-axis. Defaults to None.
+
+    Also see:
+    - `RectCoords`
+    - `SphCoords`
+    - `Location`
     """
 
-    r_mag: coord
-    phi: coord
+    r_mag: coord = None
+    phi: coord = None
 
 
 class Location(NamedTuple):
-    """Object for locations using longitude/latitude pairs. If you want a more general object for tuples, see `OrderedPair` and `OrderedTriple`.
+    """Object for locations using longitude/latitude pairs. If you want a more general object for tuples, see `OrderedPair` and `OrderedTriple`. All default to None to allow for any combination.
 
     Properties:
-    - latitude (int|float): lattitude coordinate.
-    - longitude (int|float): longitude coordinate.
+    - latitude (int|float, optional): lattitude coordinate. Defaults to None.
+    - longitude (int|float, optional): longitude coordinate. Defaults to None.
+
+    Also see:
+    - `RectCoords`
+    - `SphCoords`
+    - `PolarCoords`
+    - `OrderedPair`
+    - `OrderedTriple`
     """
 
-    latitude: coord
-    longitude: coord
+    latitude: coord = None
+    longitude: coord = None
