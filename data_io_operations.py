@@ -3,11 +3,11 @@ import json
 import os
 import re
 from typing import Any, Dict, List, Literal, Sequence, Tuple, Union
+import warnings
 
 import num2word
 import pandas as pd
 from pandas import DataFrame
-
 
 """ Data I/O operations (reading, saving, etc.) """
 
@@ -212,18 +212,6 @@ def format_long(string: str = ..., cut: float = 0.50) -> str:
     return "...{}".format(string[round(len(string) * cut) :])
 
 
-def shorten(*cols, new_len: int = None) -> Tuple[Any]:
-    """Returns a tuple of shortened columns. This was written for simple use with testing plotting functions
-
-    Args:
-        new_len (int, optional): new desired length. Defaults to None.
-
-    Returns:
-        tuple: tuple list of shortened data frames
-    """
-    return (col[:new_len] for col in cols)
-
-
 def parse_kwarg_string(kwargs_string: str = ...) -> Dict[str, Any]:
     """Parses a string of of kwargs (keyword arguments, e.g., "delim_whitespace=True, comment='#'") into a dictionary of the kwargs (particularly for use with a GUI). NOTE: Does not do well parsing strings that contain list substrings.
 
@@ -282,3 +270,44 @@ def make_vec_comp_names(
     return [
         f"{vec.upper()}_{axis.lower()}" for vec in vector_types for axis in components
     ]
+
+
+def reduce_df(
+    data: DataFrame = None,
+    percent: float = None,
+    save_type: Literal["list", "tuple"] = None,
+) -> DataFrame | List[DataFrame] | Tuple[DataFrame]:
+    """
+    Reduces size of `pd.DataFrame` input based on decimal-representation of what percentage of the original dataset the returned data set should be. Orginial dataset will be returned if parameters are not correctly set (as a safeguard). User is warned if arguments are missing.
+
+    Additional notes:
+    - Your data can be returned as a list or tuple of the columns
+
+    Parameters
+    ----------
+    data : DataFrame, optional
+        Original dataset, by default None
+    percent : float, optional
+        Percentage of `data` that you want returned, by default None
+
+    Returns
+    -------
+    DataFrame
+        Shortened dataframe.
+    """
+    if not (data or percent):
+        warnings.warn(
+            "'data' and 'percent' must both me used. Original dataset will be returned if inputted, otherwise, None will be returned.",
+            MissingArgumentsWarning,
+        )
+        return data if data and not percent else None
+    elif data and percent:
+        new_df = data.head(int(data.shape[0] * percent))
+        cols_list = [new_df[col] for col in new_df.columns]
+        returns = {"list": cols_list, "tuple": tuple(cols_list)}
+        return returns.get(save_type, new_df)
+
+
+# ANCHOR - custom warnings/errors (local use only)
+class MissingArgumentsWarning(UserWarning):
+    pass
