@@ -3,7 +3,7 @@
 from abc import ABC, abstractmethod, abstractproperty
 
 
-class StandardPlot(ABC):
+class Plot(ABC):
     """
     Standard abastract base class for generic plots.
 
