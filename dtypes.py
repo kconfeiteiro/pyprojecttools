@@ -1,6 +1,5 @@
 """Common and uncommon custom datatypes for general use"""
 
-from datetime import datetime
 from enum import Enum
 from typing import Literal, NamedTuple
 
@@ -9,33 +8,46 @@ from typing import Literal, NamedTuple
 codinglanguage = Literal[
     "python", "javascript", "html", "css", "java", "c", "c++", "c#", "matlab"
 ]
-scriptinglangauge = Literal["Batch", "PowerShell", "Git Bash", "CMD", "Ubuntu"]
+"""Literal type for popular coding langues."""
 
-# math/physics related standalone types
-coord = int | float
+scriptinglangauge = Literal["Batch", "PowerShell", "Git Bash", "CMD", "Ubuntu"]
+"""Literal type for scripting languages."""
 
 # date|file|directory standalone types
-today = datetime.now()
 months = Literal[
     "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC"
 ]
+"""Literal type for abbreviated months."""
 
 # System IO related standalone custom types
 tabularfiles = Literal[".xlsx", ".xls", ".csv", ".txt"]
+"""Common file types for tabular data."""
+
 binaryfiles = Literal[".png", ".jpg", ".pdf"]
+"""Common file types for images, gifs, etc."""
 
 # math/physics related standalone types
 coord = int | float
+"""Standard type for number (more specifically, coordinates)."""
+
 rect2d = Literal["x", "y"]
+"""Literal type for 2D rectangular coordiantes."""
+
 pol2s = Literal["r", "phi"]
+"""Literal type for polar coordiantes."""
 
 rect3d = Literal["x", "y", "z"]
-sph3d = Literal["r", "phi", "theta"]
+"""Literal type for 3D rectangular coordiantes."""
 
+sph3d = Literal["r", "phi", "theta"]
+"""Literal type for 3D spherical coordiantes."""
 
 # Miscellaneous standalone types
 std_inputs = str | float | int
+"""Standard input types"""
+
 std_numtypes = int | float
+"""Standard types for numerical inputs"""
 
 
 class Date(NamedTuple):

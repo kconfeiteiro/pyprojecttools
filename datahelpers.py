@@ -4,10 +4,9 @@ import json
 import os
 from typing import Any, Dict, List, Literal
 
-import pandas as pd
 from pandas import DataFrame, ExcelWriter
 
-from strtemplates import osdate_time
+from .strfmts import osdate_time
 
 
 def write_to_excel(
