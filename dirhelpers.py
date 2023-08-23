@@ -23,7 +23,7 @@ def delete_filetype(folder: str = ..., *filetypes: str) -> None:
             os.remove(file)
 
 
-def mkdir(*paths: str, display: bool = False) -> None:
+def mkdirectory(*paths: str, display: bool = False) -> None:
     """Makes directory if it does not exist.
 
     Args:
@@ -39,7 +39,7 @@ def mkdir(*paths: str, display: bool = False) -> None:
             print("Directory already exists")
 
 
-def unique_filename(
+def uniquefilename(
     filename: str = ...,
     path: str = os.path.dirname(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -66,7 +66,7 @@ def unique_filename(
     return unique_name, counter
 
 
-def filter_files(parent_folder: str = ..., file_type: str = ...) -> List[str]:
+def file_filter(parent_folder: str = ..., file_type: str = ...) -> List[str]:
     """Fetches all files recursively in a desired directory and all its subdirectories.
 
     Args:
@@ -79,8 +79,8 @@ def filter_files(parent_folder: str = ..., file_type: str = ...) -> List[str]:
     return glob.glob(parent_folder + "/**/" + file_type, recursive=True)
 
 
-def join(*paths: str) -> str:
-    """Joins paths
+def joinpths(*paths: str) -> str:
+    """Joins paths.
 
     Returns:
         str: joined paths

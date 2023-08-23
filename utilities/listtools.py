@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Literal, Sequence, Tuple
+from typing import Any, Dict, Iterable, List, Literal, Sequence, Set, Tuple
 
 """ Helper fuctions for any mutuable or immutable sequence """
 
@@ -34,10 +34,11 @@ def combine_lists(
     return tuple(combined) if combine_as == "tuple" else combined
 
 
-def combine_to_dictionary(
-    keys_list: List[Any] = ..., values_list: List[Any] = ...
+def to_dictionary(
+    keys_list: Set[str] = ..., values_list: List[Any] = ...
 ) -> Dict[Any, Any]:
-    """Combines to lists into a single dictionary of key-value pairs. Both lists must be of the same length, and the list of keys must not contain any duplicates
+    """
+    Combines to lists into a single dictionary of key-value pairs. Both lists must be of the same length, and the list of keys must not contain any duplicates
 
     Args:
         keys_list (list, optional): list of assigned keys. Defaults to ....
@@ -47,6 +48,32 @@ def combine_to_dictionary(
         Dictionary of key-value pairs
     """
     return {key: value for key, value in zip(keys_list, values_list)}
+
+
+def test_set(_list: Iterable = None):
+    """
+    Tests if a list is a set (i.e., containes only unique values). Finds unique values using `set()` then compares the length of the set with the length of the original list.
+
+    Args:
+        _list (Iterable=None): List to evaluate.
+
+    Returns:
+        Bool: Returns `True` if the length of the set eequals the length of the list, meaning the list contains all unqiue values, returns `False` otherwise.
+    """
+    return len(set(_list)) == len(_list)
+
+
+def len_compare(_list1: Iterable = None, _list2: Iterable = None):
+    """
+    Compares the lenghts of two lists. Returns `True` is both lenghts are the same, otherwise retuns `False`.
+
+    Args:
+        _list (Iterable=None): List to evaluate.
+
+    Returns:
+        Returns `True` is both lenghts are the same, otherwise retuns `False`.
+    """
+    return len(_list1) == len(_list2)
 
 
 def combine_list_strings(

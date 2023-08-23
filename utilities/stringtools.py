@@ -84,7 +84,8 @@ def strmatch(pattern: str = ..., string: str = ..., **kwargs) -> bool:
 def make_vec_comp_names(
     vector_types: list = None, components: list = None
 ) -> List[str]:
-    """Creates list of vector components for desired vectors for easier automated plotting.
+    """
+    Creates list of vector components for desired vectors for easier automated plotting.
 
     Args:
         vector_types (list, optional): letter denotion of vector (i.e., "B', "V", etc.). Defaults to None.
@@ -103,3 +104,44 @@ def make_vec_comp_names(
     return [
         f"{vec.upper()}_{axis.lower()}" for vec in vector_types for axis in components
     ]
+
+
+def numToWord(num: int = ...) -> str:
+    """
+    Converts an integer to its corresponding word-phrase, i.e., 23 -> 'twenty three'
+
+    Args:
+        num (int, optional): number you want to convert. Defaults to ....
+
+    Returns:
+        str: corresponding word-phrase
+    """
+    return num2word.word(num).lower()
+
+
+def format_long(string: str = ..., cut: float = 0.50) -> str:
+    """
+    Reformats long strings based on 'cut' percentage and replaces former half with an ellipse.
+
+    Args:
+        string (str, optional): string you want to modify. Defaults to ....
+        cut (float, optional): percentage of the first half of the string you want to reduce. Defaults to 0.50.
+
+    Returns:
+        str: formatted string
+    """
+    return "...{}".format(string[round(len(string) * cut) :])
+
+
+def strmatch(pattern: str = ..., string: str = ..., **kwargs) -> bool:
+    """
+    Static method for determining if a string matches a Regex pattern
+
+    Args:
+        pattern (str, optional): pattern to match to. Defaults to ....
+        string (str, optional): string you are matching. Defaults to ....
+
+    Returns:
+        bool: returns True if it matches, False if it doesn't
+    """
+    return bool(re.search(pattern, string, **kwargs))
