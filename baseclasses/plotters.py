@@ -7,13 +7,13 @@ class Plot(ABC):
     """
     Standard abastract base class for generic plots.
 
-	Method:
-		prepdata: Prepare data.
-		plot: Executes plotting code.
-		savefig: Saves figure(s).
+    Method:
+        prepdata: Prepare data.
+        plot: Executes plotting code.
+        savefig: Saves figure(s).
 
-	Properties:
-		figure: Returns figure object.
+    Properties:
+        figure: Returns figure object.
 
     Inheritance:
         ABC: Abstract Base Class.

@@ -1,34 +1,17 @@
-""" Blueprint for various pipeline algorithms """
+"""
+Blueprint for various pipeline algorithms
+
+All base classes inhert the following abstract methods from `PipelineBase`:
+    preprocess: For preprocessing data.
+    run: Executes the entire pipeline (for running all subsequent methods in a single method).
+    save: For saving all the processed data/images/etc.
+    generate_report: For generating report summary of pipeline run.
+"""
 
 from abc import ABC, abstractmethod
-from typing import Any, Iterable
+from typing import Any
 
-
-class ObjIterator:
-    """
-    `ObjIterator`: Permits iterations through objects for child classes.
-
-    Attributes:
-        items (type): Object to iterate.
-        index (type): Index counted during iteration.
-
-    Args:
-        items (Iterable=None):
-
-    """
-
-    def __init__(self, items: Iterable = None):
-        self.items = items
-        self.index = 0
-
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        if self.index >= len(self.items):
-            raise StopIteration
-        self.index += 1
-        return self.items[self.index]
+from baseclasses import ObjIterator
 
 
 class PipelineBase(ABC):
@@ -118,25 +101,4 @@ class DataPipeline(PipelineBase):
 
     @abstractmethod
     def plots(self):
-        pass
-
-
-class PlotPipeline(PipelineBase):
-    """
-    Base class for plot-related pipelines.
-
-    Abstract methods:
-        plot: Method to plot all (or single) dataset(s).
-        preview: Method for previewing plots from the pipeline run.
-
-    Inheritance:
-        PipelineBase: Base class for all types of pipelines.
-    """
-
-    @abstractmethod
-    def plot(self):
-        self
-
-    @abstractmethod
-    def preview(self):
         pass
