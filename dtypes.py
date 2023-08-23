@@ -1,10 +1,8 @@
+"""Common and uncommon custom datatypes for general use"""
+
 from datetime import datetime
 from enum import Enum
-from typing import Any, Literal, NamedTuple, TypeVar
-
-from sympy import Union
-
-""" Custom data type that fits the 'tabular data' structure """
+from typing import Literal, NamedTuple
 
 ## STANDALONE TYPES
 # coding related standalone types
@@ -21,6 +19,10 @@ today = datetime.now()
 months = Literal[
     "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC"
 ]
+
+# System IO related standalone custom types
+tabularfiles = Literal[".xlsx", ".xls", ".csv", ".txt"]
+binaryfiles = Literal[".png", ".jpg", ".pdf"]
 
 # math/physics related standalone types
 coord = int | float
