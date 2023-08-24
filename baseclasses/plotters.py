@@ -1,6 +1,7 @@
 """Abstract base classes for plotting objects."""
 
 from abc import ABC, abstractmethod, abstractproperty
+from utilities.datatools import reduce_df
 
 
 class Plot(ABC):
@@ -34,3 +35,7 @@ class Plot(ABC):
     @abstractproperty
     def figure(self):
         pass
+
+    def reduce_data(self, amt: int = None):
+        self.dataset = reduce_df(self.dataset, )
+        return
