@@ -11,9 +11,8 @@ from pylatex import (
     Subsubsection,
 )
 
-from custom_str_templates import LongDateFormat
 from reports.reportelements import Section, Subsection, Subsubsection
-
+from strfmts import longdateformat
 
 """ For building PDF reports (in LaTeX) """
 
@@ -23,7 +22,7 @@ class StandardReport(Section, Subsection, Subsubsection):
         self,
         title: str = None,
         author: str = None,
-        date: str = f"Report: {LongDateFormat}",
+        date: str = f"Report: {longdateformat}",
         save_as: str = None,
     ) -> None:
         """Creates a generic report for configurable sections (only sections, subsection, subsubsections, line(s)/paragraph(s), figures, and tables)
@@ -31,7 +30,7 @@ class StandardReport(Section, Subsection, Subsubsection):
         Args:
                 title (str, optional): title of document. Defaults to None.
                 author (str, optional): author of document. Defaults to None.
-                date (_type_, optional): date of creation. Defaults to f'Report: {LongDateFormat}'.
+                date (_type_, optional): date of creation. Defaults to f'Report: {longdateformat}'.
                 save_as (str, optional): name to dave file as (omit '.pdf' at end). Defaults to None.
         """
         super().__init__(Document(title), title, author, date)

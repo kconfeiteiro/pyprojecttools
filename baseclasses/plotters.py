@@ -39,6 +39,7 @@ class Plot(ABC):
     ) -> None:
         self.dataset = dataset
         self.plt_cfg = plt_cfg
+        self.dataset = dataset
         self.reduce_data = reduce_data
 
         if self.reduce_data:

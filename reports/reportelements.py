@@ -16,7 +16,7 @@ from pylatex import (
 from pylatex.utils import NoEscape
 from pandas import DataFrame
 
-from custom_str_templates import LongDateFormat
+from strfmts import longdateformat
 
 
 """ Houses abstract classes and class elements for generated reports """
@@ -36,12 +36,12 @@ class ReportBase(ABC):
             doc (Document, optional): 'Document' object instance. Defaults to None.
             title (str, optional): document title. Defaults to None.
             author (str, optional): document author. Defaults to None.
-            date (str, optional): current data. Defaults to LongDateFormat (i.e., August 6, 2023).
+            date (str, optional): current data. Defaults to longdateformat (i.e., August 6, 2023).
         """
         self.doc = doc
         self.title = title
         self.author = author
-        self.date = date if date else LongDateFormat
+        self.date = date if date else longdateformat
 
         self.doc.preamble.append(Command("author", self.author))
         self.doc.preamble.append(Command("date", NoEscape(self.date)))
