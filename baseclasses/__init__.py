@@ -1,6 +1,5 @@
 """Module for abstract classes (architectures) that are common and uncommon, for general usage."""
 
-from dataclasses import dataclass
 from enum import Enum
 from typing import Iterable, TypedDict
 
@@ -41,6 +40,7 @@ class RANGE(Enum):
     - (med) `RANGE.med` = 0.5
     - (high) `RANGE.high` = 0.75
     """
+
     low = 0.25
     med = 0.5
     high = 0.75
