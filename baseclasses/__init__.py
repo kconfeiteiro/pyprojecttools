@@ -1,5 +1,7 @@
 """Module for abstract classes (architectures) that are common and uncommon, for general usage."""
 
+from dataclasses import dataclass
+from enum import Enum
 from typing import Iterable
 
 
@@ -28,3 +30,17 @@ class ObjIterator:
             raise StopIteration
         self.index += 1
         return self.items[self.index]
+
+
+class RANGE(Enum):
+    """
+    Value range for data reduction.
+
+    Value range:
+    - (low) `RANGE.low` = 0.25
+    - (med) `RANGE.med` = 0.5
+    - (high) `RANGE.high` = 0.75
+    """
+    low = 0.25
+    med = 0.5
+    high = 0.75
