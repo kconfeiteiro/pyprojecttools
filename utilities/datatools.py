@@ -5,7 +5,7 @@ import warnings
 from typing import Any, List, Literal, Tuple, Union
 
 from pandas import DataFrame
-from userwarnings import MissingArgumentsWarning
+from ..userwarnings import MissingArgumentsWarning
 
 
 _reduced_types = DataFrame | List[DataFrame] | Tuple[DataFrame]

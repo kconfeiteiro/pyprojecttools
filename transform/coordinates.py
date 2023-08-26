@@ -2,7 +2,7 @@ from typing import List, Literal, MutableSequence, Tuple
 
 import sympy
 
-from units import rad2deg, deg2rad
+from .units import rad2deg, deg2rad
 
 
 """Anything related to transformatiosn of any kind"""

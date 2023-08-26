@@ -54,7 +54,7 @@ pyprojecttools
 """
 
 from .baseclasses import datareaders, pipelines, plotters
-from .dirhelpers import file_filterm, mkdirectory
+from .dirhelpers import file_filter, mkdirectory
 from .multimmedia.photomanipulation import GIF
 from .utilities import datatools, listtools, strtools
 
