@@ -16,7 +16,7 @@ from pylatex import (
 from pylatex.utils import NoEscape
 from pandas import DataFrame
 
-from strfmts import longdateformat
+from ..strfmts import longdateformat
 
 
 """ Houses abstract classes and class elements for generated reports """

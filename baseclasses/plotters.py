@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from typing import Any, List
 
 from pandas import DataFrame
-from utilities.datatools import reduce_df
+from ..utilities.datatools import reduce_df
 
 from . import RANGE
 
