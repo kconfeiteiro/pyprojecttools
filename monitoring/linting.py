@@ -5,7 +5,7 @@ from typing import (
 
 import pylint.lint
 
-from datahelpers import write_to_txt
+from ..datahelpers import write_to_txt
 
 
 """ For directly linting Python files (currently untested) """
