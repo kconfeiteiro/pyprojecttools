@@ -35,6 +35,7 @@ class Plot(ABC):
         ValueError: If inputted (int or float) value is not between `(0, 1]`
         ValueError: Missing `data` or `columns` inputs.
         KeyError: Incorrect value for `RANGE` setter. Use either `RANGE.low`, `RANGE.med`, or `RANGE.high`
+        ValueError: Configuration values must not be empty (None)
     """
 
     reduc_types = RANGE | int | float | None
@@ -68,8 +69,14 @@ class Plot(ABC):
             "size": self.size,
         }
 
+        if all(value is not None for value in self._config.values()):
+            msg = f"Configuration values must not be empty (None). Recieved:\n{self._config}"
+            raise ValueError(msg)
+
         if self.reduce_data:
-            if isinstance(self.reduce_data, int | float) and (0 < self.reduce_data < 1):
+            if isinstance(self.reduce_data, int | float) and not (
+                0 < self.reduce_data <= 1
+            ):
                 _msg = f"As an numerical value, 'reduce_data' must be between range [0, 1]. Recieved {self.reduce_data}"
                 raise ValueError(_msg)
             elif not isinstance(

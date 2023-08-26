@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 
-from dtypes import binaryfiles, tabularfiles
+from ..dtypes import binaryfiles, tabularfiles
 
 
 class Reader(ABC):
@@ -21,6 +21,7 @@ class Reader(ABC):
         save_as (tabularfiles|binaryfiles=None): File extension to save your data as (read from file or directory).
 
     """
+
     def __init__(
         self,
         input_pth: str = None,

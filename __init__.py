@@ -3,8 +3,9 @@
 
 PyProjectTools is a powerful open-source toolkit for Python project development. It offers essential utilities and efficient workflows for projects of all sizes, simplifying creation, organization, and management. From virtual environments and package management to testing and documentation. PyProjectTools offers helper functions, helper libraries, a collection of custom datatypes for type hinting, and more.
 
-*Maintainer*: Krystian Confeitiro
-*Contact*: confeitk@outlook.com
+Additional info:
+- Maintainer: Krystian Confeitiro
+- Contact: confeitk@outlook.com
 
 ### Project tree
 ```
