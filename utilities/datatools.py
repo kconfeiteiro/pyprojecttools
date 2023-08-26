@@ -8,11 +8,14 @@ from pandas import DataFrame
 from userwarnings import MissingArgumentsWarning
 
 
+_reduced_types = DataFrame | List[DataFrame] | Tuple[DataFrame]
+
+
 def reduce_df(
     data: DataFrame = None,
     percent: float = None,
     save_type: Literal["list", "tuple", "dataframe"] = None,
-) -> DataFrame | List[DataFrame] | Tuple[DataFrame]:
+) -> _reduced_types:
     """
     Reduces size of `pd.DataFrame` input based on decimal-representation of what percentage of the original dataset the returned data set should be. Orginial dataset will be returned if parameters are not correctly set (as a safeguard). User is warned if arguments are missing.
 
