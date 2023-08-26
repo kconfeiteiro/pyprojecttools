@@ -1,7 +1,6 @@
 # 1. Contents
 - [1. Contents](#1-contents)
 - [2. Introduction](#2-introduction)
-    - [Present Selection of Tools:](#present-selection-of-tools)
 - [3. Disclaimer](#3-disclaimer)
 - [4. Usage](#4-usage)
   - [4.1. Pip Packages](#41-pip-packages)
@@ -19,20 +18,10 @@
 
 This repository will be continuously maintained by its owner. If there are any issues, please contact [confeitk@outlook.com](mailto:confeitk@outlook.com).
 
-### Present Selection of Tools:
-
-- [Saving data to Excel files, JSON files, and text files](FileTools/FileDataHandeling.py)
-- [Parsing directories](FileTools/FileSorting.py)
-- [Application monitoring](/ApplicationMonitoring/)
-  - Line profiling, memory profiling, linting, logging, etc.
-- [Commonly used string formats](/Static/)
-  - [Pre-formatted dates](/Static/Dates.py)
-- [Custom datatypes](/Datatypes/)
-  - [Tabular data structures](Datatypes/Tabular.py)
-- [Batch files](/useful_batch_scripts/)
-  - Extracting data from tar files (`.tar.gz`)
-  - Cloning `PyProjectTools` for ease-of-use in other projects
-  - Auto-updating `PyProjectTools`
+<!-- # 3. To-Do
+- [ ] Reorganzie entire directory
+  - [ ] Combine scripts where needed
+- [ ] -->
 
 # 3. Disclaimer
 The code in this repository was written using version `Python 3.11.4`, meaning, there might be compatibility issues with older Python versions. You can download version 3.11.4 [here](https://www.python.org/downloads/windows/).
@@ -72,31 +61,61 @@ which will change your directory to that of the registry, then `cd ..` will auto
 
 ## 4.2. Calling Functions
 
-The layout of the directory is (after its cloned)
-
+Project tree:
 ```
-< Your working directory >
-   |   main.py
-   └─── PyProjectUtils
-         |
-         └─── Utils
-              │   DataSaving.py
-              │   FileReading.py
-              │   FileSorting.py
-              │   Tools.py
-              │   __init__.py
+pyprojecttools
+├─ baseclasses
+│  ├─ datareaders.py
+│  ├─ pipelines.py
+│  ├─ plotters.py
+│  └─ __init__.py
+├─ batch_scripts
+│  ├─ clonePyProjectTools.bat
+│  ├─ tarExtraction.bat
+│  └─ update.bat
+├─ datahelpers.py
+├─ dirhelpers.py
+├─ dtypes.py
+├─ errors_exceptions.py
+├─ iterators.py
+├─ monitoring
+│  ├─ lineprofiling.py
+│  ├─ linting.py
+│  ├─ logging.py
+│  ├─ memoryprofiling.py
+│  ├─ methodprofiling.py
+│  └─ __init__.py
+├─ multimmedia
+│  ├─ photomanipulation.py
+│  └─ __init__.py
+├─ reports
+│  ├─ reportelements.py
+│  ├─ reports.py
+│  └─ __init__.py
+├─ strfmts.py
+├─ transform
+│  ├─ coordinates.py
+│  ├─ units.py
+│  └─ __init__.py
+├─ userwarnings.py
+├─ utilities
+│  ├─ datatools.py
+│  ├─ listtools.py
+│  ├─ strtools.py
+│  └─ __init__.py
+└─ __init__.py
 ```
 
 which means to call functions in your main script (`main.py`, in this example), use
 
 ```py
-from PyProjectUtils.Utils import Tools
+from pyprojecttools.dirhelpers import mkdirectory
 ```
 
 (for example) to import an entire script. If you would like to call a specific class only, use
 
 ```py
-from PyProjectUtils.Utils.Tools import Tools
+import pyprojecttools.dirhelpers as helpers
 ```
 
 Note that if you make changes to the cloned repository, they will not be reflected on GitHub.
@@ -104,15 +123,15 @@ Note that if you make changes to the cloned repository, they will not be reflect
 ### 4.2.1. Working Example
 
 ```py
-# import the function 'mkdir' from the FileSorting script
-from PyProjectUtils.FileTools.FileSorting import mkdir
+# import the function 'mkdirectory' from the `dirhelpers` script
+from pyprojecttools.dirhelpers import mkdirectory
 
 # call function from imported script
 filepath = 'example/path/to/dir'
-mkdir(filepath)
+mkdirectory(filepath)
 ```
 
-where the function `mkdir()`, creates a directory if it does not exist. Calling static functions and classes require the same import syntax.
+where the function `mkdirectory()`, creates a directory if it does not exist. Calling static functions and classes require the same import syntax.
 
 ## 4.3. Cloning & Updating
 ### 4.3.1. Pull requests
@@ -120,10 +139,10 @@ where the function `mkdir()`, creates a directory if it does not exist. Calling 
 Pull requests are automatically completed. To pull new changes, use the command
 
 ```
-cd PyProjectTools & git pull https://github.com/kconfeiteiro/PyProjectTools & cd ..
+pushd PyProjectTools & git pull & popd
 ```
 
-in your terminal (opened in your working directory). You can also simply use `cd PyProjectTools & git pull & cd ..`
+in your terminal (opened in your working directory).
 
 
 If you do not have git downloaded and configured, the commands above will not work in your terminal. If this is the case, you can simply download the repository as a `.zip` file by clicking *Download Zip* in the green `<> Code` dropdown menu:
