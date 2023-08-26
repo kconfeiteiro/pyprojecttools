@@ -1,7 +1,6 @@
 import time
 from typing import Any, Tuple, Union
 
-
 """ Tracking method executions, method runtimes, etc. """
 
 
@@ -10,7 +9,7 @@ class Timer:
         """Independent decorator for timing function executions. Can be used with Logger class.
 
         Args:
-                func (callable): function automatically inputted when decorator is called
+            func (callable): function automatically inputted when decorator is called
         """
         self.func = func
 
@@ -20,10 +19,10 @@ class Timer:
         """Calculates function execution time.
 
         Args:
-                return_result (bool, optional): option to return result of function. Defaults to False.
+            return_result (bool, optional): option to return result of function. Defaults to False.
 
         Returns:
-                tuple[float, Any] or float: returns execution or addition of the function's result
+            tuple[float, Any] or float: returns execution or addition of the function's result
         """
         start_time = time.time()
         result = self.func(*args, **kwargs)
@@ -36,15 +35,43 @@ class Timer:
 
 
 class Counter:
+    """Decorator for counting number of function executions. Updates automatically. Can be used with Logger class."""
+
     def __init__(self):
-        """Decorator for counting number of function executions. Updates automatically. Can be used with Logger class."""
         self.count = 0
 
     def __call__(self) -> int:
         """Counts number of times a function is called. Updates automatically.
 
         Returns:
-                int: function call-count
+            int: function call-count
         """
         self.count += 1
         return self.count
+
+
+class Timer:
+    """
+    Context manager for timing functions
+
+    Returns:
+        duraction (str): Execution time in seconds as string. Call `.fulltime` property method.
+
+    """
+
+    def __enter__(self):
+        self.start_time = time.time()
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.end_time = time.time()
+        self.elapsed_time = self.end_time - self.start_time
+        print(f"Elapsed time: {self.elapsed_time} seconds")
+        if exc_type:
+            print(f"An exception of type {exc_type} occurred with value: {exc_value}")
+            print("Traceback:")
+            traceback.print_tb(traceback)
+
+    @property
+    def fulltime(self) -> str:
+        return str(self.elapsed_time)
