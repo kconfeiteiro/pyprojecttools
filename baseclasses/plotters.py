@@ -1,7 +1,7 @@
 """Abstract base classes for plotting objects."""
 
 from abc import ABC, abstractmethod
-from typing import Any, List
+from typing import Any, List, Optional
 
 from pandas import DataFrame
 from ..utilities.datatools import reduce_df
@@ -38,14 +38,14 @@ class Plot(ABC):
         ValueError: Configuration values must not be empty (None)
     """
 
-    reduc_types = RANGE | int | float | None
+    reduc_types = Optional[RANGE | int | float]
 
     def __init__(
         self,
-        columns: List[str] | None = None,
+        columns: Optional[List[str]] = None,
         dataset: DataFrame | Any = None,
         figtitle: str = None,
-        output_dir: str | None = None,
+        output_dir: Optional[str] = None,
         reduce_data: reduc_types = None,
         save_as: str = None,
         size: str = None,
