@@ -4,8 +4,9 @@ from abc import ABC, abstractmethod
 from typing import Any, List, Optional
 
 from pandas import DataFrame
-from ..utilities.datatools import reduce_df
 
+from ..errors_exceptions import KeyErrorWarning, MissingDataError
+from ..utilities.datatools import reduce_df
 from . import RANGE
 
 
@@ -69,6 +70,10 @@ class Plot(ABC):
             "size": self.size,
         }
 
+        if not self.columns and (3 < self.dataset.shape[1] <= 0):
+            _msg = f"Invalid data shape: {self.dataset.shape}. Data must have three columns"
+            raise MissingDataError(self.dataset)
+
         if all(value is not None for value in self._config.values()):
             msg = f"Configuration values must not be empty (None). Recieved:\n{self._config}"
             raise ValueError(msg)
@@ -87,11 +92,7 @@ class Plot(ABC):
             self._reduce_data(self.reduce_data)
 
     def prepdata(self):
-        if self.data and self.columns:
-            self.dataset = self.dataset[[*self.columns]]
-        else:
-            _msg = f"Missing `data` or `columns` inputs.\nRecieved: \nData: {type(self.data)}; Columns: {type(self.columns)}"
-            raise ValueError(_msg)
+        self.dataset = self.dataset[[*self.columns]]
 
     @abstractmethod
     def plot(self):
