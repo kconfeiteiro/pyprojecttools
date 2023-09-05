@@ -11,6 +11,8 @@ All base classes inhert the following abstract methods from `PipelineBase`:
 from abc import ABC, abstractmethod
 from typing import Any
 
+from pandas import Series, DataFrame
+
 from ..iterators import ObjIterator
 
 
@@ -88,7 +90,7 @@ class DataPipeline(PipelineBase):
     def __iter__(self):
         return ObjIterator(self.data)
 
-    def add_data(self, data: Any = None):
+    def add_data(self, data: DataFrame | Series = None):
         self.data.append(data)
 
     @abstractmethod
