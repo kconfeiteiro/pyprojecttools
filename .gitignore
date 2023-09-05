@@ -1,7 +1,10 @@
-testing.py
-run.bat
+.vscode
+.history
+*.bat
 *.pyc
+
 Utils\.vscode
+testing.py
 
 pyprojecttools/
 pyprojecttools/

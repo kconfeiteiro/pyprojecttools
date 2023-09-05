@@ -27,14 +27,21 @@ class IncompatibleArugmentsWarning(UserWarning):
     pass
 
 
+class KeyErrorWarning(UserWarning):
+    def __init__(self, *args: object) -> None:
+        super().__init__(*args)
+
+
 class MissingArgumentError(ValueError):
-    def __init__(self, functionname: object = None) -> None:
+    def __init__(self, function: object = None) -> None:
         super().__init__()
-        self.functionname = functionname
-        self._funcname = self.functionname.__name__
+        self.function = function
+        self._funcname = self.function.__name__
+        self.tb = traceback.format_exc()
+        self._msg = f"Missing arguments for {self._funcname}"
 
     def __str__(self) -> str:
-        return
+        return f"{self._msg}\n{self.tb}"
 
 
 class FileReadError(ValueError):
@@ -47,15 +54,22 @@ class FileReadError(ValueError):
         return f"{self.msg}\n{self.tb}"
 
 
-class MissingMethod(Exception):
+class MissingMethodError(Exception):
     def __init__(self, classname: Any = None, method: Callable = None) -> None:
         self.classname = classname.__name__
         self.method = method.__name__
+        self.tb = traceback.format_exc()
+        self._msg = f"Method {self.method} in {self.classname} must be ran prior."
 
     def __str__(self):
-        return f"Method {self.method} in {self.classname} must be ran prior."
+        return f"{self._msg}\n{self.tb}"
 
 
-class KeyErrorWarning(UserWarning):
-    def __init__(self, *args: object) -> None:
-        super().__init__(*args)
+class MissingDataError(ValueError):
+    def __init__(self, data) -> None:
+        self._data = data
+        self.tb = traceback.format_exc()
+        self._msg = f"Invalid dataset shape, '{self._data.shape}'."
+
+    def __str__(self) -> str:
+        return f"{self._msg}\n{self.tb}"
