@@ -1,11 +1,33 @@
 """
 Blueprint for various pipeline algorithms
 
-All base classes inhert the following abstract methods from `PipelineBase`:
-    preprocess: For preprocessing data.
-    run: Executes the entire pipeline (for running all subsequent methods in a single method).
-    save: For saving all the processed data/images/etc.
-    generate_report: For generating report summary of pipeline run.
+Classes
+-------
+class PipelineBase
+	method __new__
+	method __init_subclass__
+	method __repr__
+	method generate_report
+	method preprocess
+	method run
+	method save
+class DataPipeline
+	method __init__
+	method __len__
+	method __getitem__
+	method __iter__
+	method add_data
+	method analyze
+	method plots
+	method statistics
+
+Abstract Methods From `Pipelinebase`
+------------------------------------
+- Preprocess: For preprocessing data.
+- Run: Executes the entire pipeline (for running all subsequent methods in a single method).
+- Save: For saving all the processed data/images/etc.
+- Generate_report: For generating report summary of pipeline run.
+
 """
 
 from abc import ABC, abstractmethod

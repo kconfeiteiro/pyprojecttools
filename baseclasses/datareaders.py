@@ -1,4 +1,15 @@
-"""Abstract classes for child classes for general data-reading usage"""
+"""
+Abstract classes for child classes for general data-reading usage.
+
+Classes
+-------
+class Reader
+	method __init__
+	method load
+	method prepare
+	method read
+	method save
+"""
 
 from abc import ABC, abstractmethod
 

@@ -1,4 +1,39 @@
-"""Common and uncommon custom datatypes for general use"""
+"""
+Custom datatypes for general use
+
+Variables
+---------
+- variable binaryfiles
+- variable codinglanguage
+- variable coord
+- variable months
+- variable pol2s
+- variable rect2d
+- variable rect3d
+- variable scriptinglangauge
+- variable sph3d
+- variable std_inputs
+- variable std_numtypes
+- variable tabularfiles
+
+Classes
+--------
+- class Date
+- class Location
+- class Measurement
+- class OrderedPair
+- class OrderedTriple
+- class Person
+- class PolarCoords
+- class Range
+- class RectCoords
+- class SphCoords
+- class Task
+- class TaskStatus
+- class Wkday
+
+
+"""
 
 from enum import Enum
 from typing import Literal, NamedTuple

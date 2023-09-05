@@ -1,4 +1,19 @@
-"""Module for abstract classes (architectures) that are common and uncommon, for general usage."""
+"""
+Module for abstract classes (architectures) that are common and uncommon, for general usage.
+
+Header
+------
+Classes
+class RANGE
+	variable low
+	variable med
+	variable high
+class PltCfg
+	variable size
+	variable save_as
+	variable reduce_data
+	variable output_dir
+"""
 
 from enum import Enum
 from typing import TypedDict
