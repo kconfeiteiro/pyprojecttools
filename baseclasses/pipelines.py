@@ -72,14 +72,6 @@ class PipelineBase(ABC):
         pass
 
     @abstractmethod
-    def run(self):
-        pass
-
-    @abstractmethod
-    def save(self):
-        pass
-
-    @abstractmethod
     def generate_report(self):
         pass
 
