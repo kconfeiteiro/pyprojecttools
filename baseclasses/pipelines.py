@@ -31,7 +31,6 @@ Abstract Methods From `Pipelinebase`
 """
 
 from abc import ABC, abstractmethod
-from typing import Any
 
 from pandas import Series, DataFrame
 
@@ -69,14 +68,6 @@ class PipelineBase(ABC):
 
     @abstractmethod
     def preprocess(self):
-        pass
-
-    @abstractmethod
-    def run(self):
-        pass
-
-    @abstractmethod
-    def save(self):
         pass
 
     @abstractmethod
