@@ -13,12 +13,15 @@ Functions
 import json
 import os
 import warnings
-from typing import Any, Dict, List, Literal, Tuple
+from typing import Any, Dict, List, Literal, Sequence, Tuple
+from zipfile import ZipFile
 
+from genericpath import isdir
 from pandas import DataFrame, ExcelWriter
 
-from .strfmts import osdate_time
-from .userwarnings import MissingArgumentsWarning
+from dirhelpers import listdir
+from strfmts import osdate_time
+from userwarnings import MissingArgumentsWarning
 
 _reduced_types = DataFrame | List[DataFrame] | Tuple[DataFrame]
 
@@ -162,3 +165,38 @@ def pull_columns(data: Any = None, *cols, as_tuple: bool = False) -> List | Tupl
     """
     pulled = (data[col] for col in cols)
     return pulled if as_tuple else list(pulled)
+
+
+def zip_folder(
+    zipped_filename: str = None,
+    to_zip: Sequence[str] | str = None,
+    mode: Literal["w", "x", "a"] = "w",
+) -> None:
+    """
+    Zip files to folder. Enter a path to a dirctory, or a list of paths to files to zip.
+
+    Args:
+        zipped_filename (str, optional): Name of zipped folder. Defaults to None.
+        to_zip (Sequence[str] | str, optional): Path to directory or list of paths to zip. Defaults to None.
+        mode (literal["w", "x", "a"], optional): Zipping mode. Defaults to "w".
+
+    Notes:
+    - Zipping modes:
+        - `w` for writing to a new file
+        - `x` for referring to an existing file.
+        - `a` for appending to an existing file.
+    """
+    with ZipFile(zipped_filename, mode) as file:
+        files_list = list(to_zip) if os.path.isdir(to_zip) else to_zip
+        for _file in files_list:
+            file.write(_file)
+
+
+def zip_extract(
+    zipped_file: str = None,
+    read_mode: Literal["r"] = "r",
+    extract_mode: Literal["folder", "lists"] = "folder",
+    out_dir: str = None,
+) -> List[str] | None:
+    with ZipFile(zipped_file, read_mode) as file:
+        file.extractall(out_dir)

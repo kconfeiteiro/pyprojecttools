@@ -67,7 +67,7 @@ def uniquefilename(
         counter += 1
         unique_name = f"{base_name} ({copy_pattern}{counter}){ext}"
 
-    return unique_name, counter
+    return (unique_name, counter)
 
 
 def file_filter(parent_folder: str = ..., file_type: str = ...) -> List[str]:
@@ -90,3 +90,16 @@ def joinpths(*paths: str) -> str:
         str: joined paths
     """
     return os.path.join(*paths)
+
+
+def listdir(path: str = None) -> List[str]:
+    """
+    Lists all files in a directory (not recursive).
+
+    Args:
+        path (str, optional): Path to directory to list. Defaults to None.
+
+    Returns:
+        List[str]: List of file in said directory.
+    """
+    return glob.glob(pathname=path)
