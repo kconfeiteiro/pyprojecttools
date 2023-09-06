@@ -1,4 +1,14 @@
-""" Data I/O operations (reading, saving, etc.) """
+"""
+Data I/O operations (reading, saving, etc.)
+
+Functions
+---------
+- function read_json
+- function read_txt
+- function write_to_excel
+- function write_to_json
+- function write_to_txt
+"""
 
 import json
 import os

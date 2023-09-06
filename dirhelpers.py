@@ -1,12 +1,16 @@
+"""
+Sorting, deleting, copying files, and dealing with directories
+
+Functions:
+- function delete_filetype
+- function file_filter
+- function joinpths
+- function mkdirectory
+- function uniquefilename
+"""
 import glob
 import os
-from typing import (
-    List,
-    Tuple,
-)
-
-
-""" Sorting, deleting, copying files, and dealing with directories """
+from typing import List, Tuple
 
 
 def delete_filetype(folder: str = ..., *filetypes: str) -> None:

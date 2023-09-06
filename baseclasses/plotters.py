@@ -1,4 +1,25 @@
-"""Abstract base classes for plotting objects."""
+"""
+Abstract base classes for plotting objects.
+
+Classes
+-------
+class Plot
+	variable reduc_types
+	method __init__
+	method columns
+	method dataset
+	method figure
+	method plot
+	method prepdata
+	method savefig
+	variable figtitle
+	variable output_dir
+	variable reduce_data
+	variable save_as
+	variable size
+
+
+"""
 
 from abc import ABC, abstractmethod
 from typing import Any, List, Optional
