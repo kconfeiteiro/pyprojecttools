@@ -27,7 +27,7 @@ from typing import Any, List, Optional
 from pandas import DataFrame
 
 from ..errors_exceptions import KeyErrorWarning, MissingDataError
-from ..utilities.datatools import reduce_df
+from ..datahelpers import reduce_df
 from . import RANGE
 
 

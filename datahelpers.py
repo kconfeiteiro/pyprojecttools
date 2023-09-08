@@ -16,18 +16,16 @@ import warnings
 from typing import Any, Dict, List, Literal, Sequence, Tuple
 from zipfile import ZipFile
 
-from genericpath import isdir
 from pandas import DataFrame, ExcelWriter
-
-from dirhelpers import listdir
-from strfmts import osdate_time
-from userwarnings import MissingArgumentsWarning
+# from strfmts import osdate_time
+# from userwarnings import MissingArgumentsWarning
 
 _reduced_types = DataFrame | List[DataFrame] | Tuple[DataFrame]
 
 
 def to_excel(
-    save_as: str = f"untitled_excel_sheet-{osdate_time}.xlsx",
+    # save_as: str = f"untitled_excel_sheet-{osdate_time}.xlsx",
+    save_as: str = None,
     df: DataFrame | List[DataFrame] = None,
     sheetnames: str | List[str] = "Main",
     index: bool = False,
@@ -143,7 +141,7 @@ def reduce_df(
     """
     if not (data or percent):
         _msg = "'data' and 'percent' must both me used. Original dataset will be returned if inputted, otherwise, None will be returned."
-        warnings.warn(_msg, MissingArgumentsWarning)
+        # warnings.warn(_msg, MissingArgumentsWarning)
         return data if data and not percent else None
     elif data and percent:
         new_df = data.head(int(data.shape[0] * percent))
