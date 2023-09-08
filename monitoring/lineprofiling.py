@@ -1,11 +1,30 @@
+"""
+For anything related to line-profiling (currently untested).
+
+Library Information
+-------------------
+Workspace: pyprojecttools
+FIlename: lineprofiling.py
+Path: monitoring\lineprofiling.py
+Date: September, 06 2023
+"""
+
 from typing import Callable
 
 from line_profiler import LineProfiler
 
-""" For anything related to line-profiling (currently untested) """
-
 
 class LineProfiler:
+    """
+    Line profiler for in-editor line profiling.
+
+    Args:
+        func (Callable, optional): target function. Defaults to ....
+        line_profiler (Callable, optional): line profiler object (from line_profiler). Defaults to LineProfiler().
+        log_filename (str, optional): name to save log file as. Defaults to None.
+        pdf_filename (str, optional): name to save PDF report as (not working). Defaults to None.
+    """
+
     def __init__(
         self,
         func: Callable = ...,
@@ -13,14 +32,6 @@ class LineProfiler:
         log_filename: str = None,
         pdf_filename: str = None,
     ):
-        """Line profiler
-
-        Args:
-                func (Callable, optional): target function. Defaults to ....
-                line_profiler (Callable, optional): line profiler object (from line_profiler). Defaults to LineProfiler().
-                log_filename (str, optional): name to save log file as. Defaults to None.
-                pdf_filename (str, optional): name to save PDF report as (not working). Defaults to None.
-        """
         self.func = func
         self.line_profiler = line_profiler
         self.log_filename = log_filename

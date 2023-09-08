@@ -92,3 +92,28 @@ def combine_list_strings(
         "{} ({})".format(str(l1), str(l2))
         for l1, l2 in zip(primary_list, secondary_list)
     ]
+
+
+def make_vec_comp_names(
+    vector_types: list = None, components: list = None
+) -> List[str]:
+    """
+    Creates a list of vector components for desired vectors. Used statically.
+
+    Args:
+        vector_types (list, optional): Letter component of vector (e.g., "B", "V"). Default is None.
+        components (list, optional): Letter component of vector (e.g., "x", "y"). Default is None.
+
+    Returns:
+        List[str]: Returns a list of formatted vector component names as strings.
+
+    Example:
+        >>> vector_types = ['position', 'velocity']
+        >>> components = ['x', 'y', 'z']
+        >>> output = make_vec_comp_names(vector_types, components)
+        >>> print(output)
+        >>> ['POSITION_x', 'POSITION_y', 'POSITION_z', 'VELOCITY_x', 'VELOCITY_y', 'VELOCITY_z']
+    """
+    return [
+        f"{vec.upper()}_{axis.lower()}" for vec in vector_types for axis in components
+    ]

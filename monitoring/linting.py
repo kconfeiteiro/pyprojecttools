@@ -5,7 +5,7 @@ from typing import (
 
 import pylint.lint
 
-from ..datahelpers import write_to_txt
+from ..datahelpers import to_txt
 
 
 """ For directly linting Python files (currently untested) """
@@ -56,7 +56,7 @@ class Lint:
         )
 
         if write_to_text:
-            write_to_txt(write_to_text, content=self.linting_results)
+            to_txt(write_to_text, content=self.linting_results)
 
     @staticmethod
     def parse_code(filename: str = ..., mode: Literal["r", "rb"] = "r") -> Any:

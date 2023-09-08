@@ -1,5 +1,5 @@
 """
-Data I/O operations (reading, saving, etc.)
+Data I/O operations (reading, saving, etc.).
 
 Functions
 ---------
@@ -12,15 +12,20 @@ Functions
 
 import json
 import os
-from typing import Any, Dict, List, Literal
+import warnings
+from typing import Any, Dict, List, Literal, Sequence, Tuple
+from zipfile import ZipFile
 
 from pandas import DataFrame, ExcelWriter
+# from strfmts import osdate_time
+# from userwarnings import MissingArgumentsWarning
 
-from .strfmts import osdate_time
+_reduced_types = DataFrame | List[DataFrame] | Tuple[DataFrame]
 
 
-def write_to_excel(
-    save_as: str = f"untitled_excel_sheet-{osdate_time}.xlsx",
+def to_excel(
+    # save_as: str = f"untitled_excel_sheet-{osdate_time}.xlsx",
+    save_as: str = None,
     df: DataFrame | List[DataFrame] = None,
     sheetnames: str | List[str] = "Main",
     index: bool = False,
@@ -36,14 +41,14 @@ def write_to_excel(
         index (bool, optional): option to write the index of each dataframe. Defaults to False.
     """
     with ExcelWriter(save_as) as writer:
-        if isinstance(sheetnames, list):
+        if isinstance(sheetnames, List[DataFrame]):
             for data, sheetnames in zip(df, sheetnames):
                 data.to_excel(writer, sheet_name=sheetnames, index=index, **kwargs)
         else:
             df.to_excel(writer, sheet_name=sheetnames, index=index, **kwargs)
 
 
-def write_to_txt(
+def to_txt(
     save_as: str = None,
     lines: str | List[str] = None,
     mode: Literal["w", "wb", "a"] = "w",
@@ -66,7 +71,7 @@ def write_to_txt(
         file.close()
 
 
-def write_to_json(
+def to_json(
     save_as: str = None,
     dict_to_save: Dict = None,
     mode: Literal["w", "wb"] = "w",
@@ -113,3 +118,83 @@ def read_json(filename: str = None, *args, **kwargs) -> Dict[Any, Any]:
     """
     with open(filename, *args, **kwargs) as f:
         return json.load(f) if os.path.exists(filename) else None
+
+
+def reduce_df(
+    data: DataFrame = None,
+    percent: float = None,
+    save_type: Literal["list", "tuple", "dataframe"] = None,
+) -> _reduced_types:
+    """
+    Reduces size of `pd.DataFrame` input based on decimal-representation of what percentage of the original dataset the returned data set should be. Orginial dataset will be returned if parameters are not correctly set (as a safeguard). User is warned if arguments are missing.
+
+    Notes:
+    - Your data can be returned as a list or tuple of the columns.
+
+    Args:
+        data (`DataFrame`): Original dataset, by default None
+        percent (float): Percentage of `data` that you want returned, by default None
+        save_type (literal, optional): Return shortened `DataFrame` as a `tuple` or `list` of the columns, returns `new_df` if left `None` or `"dataframe"`.
+
+    Returns:
+        DataFrame: Shortened `DataFrame` as a tuple or list of the columns, or left as a `DataFrame`.
+    """
+    if not (data or percent):
+        _msg = "'data' and 'percent' must both me used. Original dataset will be returned if inputted, otherwise, None will be returned."
+        # warnings.warn(_msg, MissingArgumentsWarning)
+        return data if data and not percent else None
+    elif data and percent:
+        new_df = data.head(int(data.shape[0] * percent))
+        df_list = [new_df[col] for col in new_df.columns]
+        returns = {"list": df_list, "tuple": tuple(df_list), "dataframe": new_df}
+        return returns.get(save_type, new_df)
+
+
+def pull_columns(data: Any = None, *cols, as_tuple: bool = False) -> List | Tuple:
+    """
+    Method for pulling specific columns of dataframe, as list or tuple of said columns.
+
+    Args:
+        data (Any, optional): data to pull from (as a Pandas dataframe). Defaults to None.
+        tuple (bool, optional): option to return a tuple of pulled columns. Defaults to False.
+
+    Returns:
+        list or tuple: returns targeted columns as a list or tuple
+    """
+    pulled = (data[col] for col in cols)
+    return pulled if as_tuple else list(pulled)
+
+
+def zip_folder(
+    zipped_filename: str = None,
+    to_zip: Sequence[str] | str = None,
+    mode: Literal["w", "x", "a"] = "w",
+) -> None:
+    """
+    Zip files to folder. Enter a path to a dirctory, or a list of paths to files to zip.
+
+    Args:
+        zipped_filename (str, optional): Name of zipped folder. Defaults to None.
+        to_zip (Sequence[str] | str, optional): Path to directory or list of paths to zip. Defaults to None.
+        mode (literal["w", "x", "a"], optional): Zipping mode. Defaults to "w".
+
+    Notes:
+    - Zipping modes:
+        - `w` for writing to a new file
+        - `x` for referring to an existing file.
+        - `a` for appending to an existing file.
+    """
+    with ZipFile(zipped_filename, mode) as file:
+        files_list = list(to_zip) if os.path.isdir(to_zip) else to_zip
+        for _file in files_list:
+            file.write(_file)
+
+
+def zip_extract(
+    zipped_file: str = None,
+    read_mode: Literal["r"] = "r",
+    extract_mode: Literal["folder", "lists"] = "folder",
+    out_dir: str = None,
+) -> List[str] | None:
+    with ZipFile(zipped_file, read_mode) as file:
+        file.extractall(out_dir)

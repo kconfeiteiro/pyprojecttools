@@ -1,12 +1,13 @@
 .vscode
+.VSCodeCounter
 .history
 *.bat
 *.pyc
 
-__pycache__
 Utils\.vscode
+
 pyprojecttools/
-.history/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
