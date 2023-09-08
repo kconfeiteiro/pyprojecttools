@@ -56,20 +56,17 @@ pyprojecttools
 from .baseclasses import datareaders, pipelines, plotters
 from .dirhelpers import file_filter, mkdirectory
 from .multimmedia.photomanipulation import GIF
-from .utilities import datatools, listtools, strtools
+from .datahelpers import *
 
 __version__ = "1.2.2"
 __all__ = [
     "datareaders",
-    "datatools",
     "DirectoryFileIterator",
-    "file_filterm",
+    "file_filter",
     "GIF",
-    "listtools",
     "mkdirectory",
     "pipelines",
     "plotters",
-    "strtools",
 ]
 __license__ = "MIT"
 __url__ = "https://github.com/kconfeiteiro/pyprojecttools"
