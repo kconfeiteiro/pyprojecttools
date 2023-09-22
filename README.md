@@ -14,14 +14,10 @@
 
 # 2. Introduction
 
-`PyProjectTools` is a powerful open-source toolkit for Python project development. It offers essential utilities and efficient workflows for projects of all sizes, simplifying creation, organization, and management. From virtual environments and package management to testing and documentation. `PyProjectTools` offers helper functions, helper libraries, a collection of custom datatypes for type hinting, and more. Collaboration and additional contributions are welcome and encouraged!
+`pyprojecttools` is a powerful open-source toolkit for Python projects. This toolkit offers essential utilities and efficient workflows for projects of all sizes, simplifying creation, organization, and management. From virtual environments and package management to testing and documentation. `pyprojecttools` offers helper functions, helper libraries, a collection of custom datatypes for type hinting, and more. Collaboration and additional contributions are welcome and encouraged! While trivial in nature this toolkit can offer ease-of-access for simple functions, formatted strings, and more, used in many types of Python projects.
 
 This repository will be continuously maintained by its owner. If there are any issues, please contact [confeitk@outlook.com](mailto:confeitk@outlook.com).
 
-<!-- # 3. To-Do
-- [ ] Reorganzie entire directory
-  - [ ] Combine scripts where needed
-- [ ] -->
 
 # 3. Disclaimer
 The code in this repository was written using version `Python 3.11.4`, meaning, there might be compatibility issues with older Python versions. You can download version 3.11.4 [here](https://www.python.org/downloads/windows/).
@@ -31,16 +27,16 @@ The code in this repository was written using version `Python 3.11.4`, meaning, 
 All you need to do to use the functions is clone the repository locally by typing
 
 ```cmd
-git clone https://github.com/kconfeiteiro/PyProjectTools
+git clone https://github.com/kconfeiteiro/pyprojecttools
 ```
-in your `cmd` (opened in your working directory). Then, you can call functions from the `PyProjectTools` directory.
+in your `cmd` (opened in your working directory). Then, you can call functions from the `pyprojecttools` directory.
 
 For future use, `clonePyProjectTools.bat` has been added to ease the cloning process for multiple projects. The URL does not change, so this can be used as long as need. To run the batch file, simply type
 
 ```cmd
 clonePyProjectTools.bat
 ```
-in your terminal. Or, click the icon for the `.bat` file from your computer's native file explorer.
+in your terminal. Or, click the icon for the `.bat` file from your computer's native file explorer. You can also easily use a *[doskey](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/doskey)* to easily download this package; I would recommend making **[global doskeys](https://superuser.com/questions/1134368/create-permanent-doskey-in-windows-cmd)** to allow for its use across all projects.
 
 
 ## 4.1. Pip Packages
@@ -51,10 +47,10 @@ in your terminal. Or, click the icon for the `.bat` file from your computer's na
 py -m pip install -r requirements.txt
 ```
 
-Make sure to be in the directory of the cloned repository, `PyProjectTools`, while `pip` installing the requirements. You can also use a similar command as [Pull Requests](https://github.com/kconfeiteiro/PyProjectTools#pull-requests):
+Make sure to be in the directory of the cloned repository, `pyprojecttools`, while `pip` installing the requirements. You can also use a similar command as [Pull Requests](https://github.com/kconfeiteiro/PyProjectTools#pull-requests):
 
 ```
-cd PyProjectTools & py -m pip install -r requirements.txt & cd ..
+pushd pyprojecttools & py -m pip install -r requirements.txt & popd
 ```
 
 which will change your directory to that of the registry, then `cd ..` will automatically return you to your working directory.
@@ -118,7 +114,7 @@ from pyprojecttools.dirhelpers import mkdirectory
 import pyprojecttools.dirhelpers as helpers
 ```
 
-Note that if you make changes to the cloned repository, they will not be reflected on GitHub.
+*Note*: If you make changes to the cloned repository, they will not be reflected on GitHub unless you [fork the remote repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 
 ### 4.2.1. Working Example
 
@@ -131,7 +127,7 @@ filepath = 'example/path/to/dir'
 mkdirectory(filepath)
 ```
 
-where the function `mkdirectory()`, creates a directory if it does not exist. Calling static functions and classes require the same import syntax.
+where the function, `mkdirectory()`, creates a directory if it does not exist. Calling static functions and classes require the same import syntax.
 
 ## 4.3. Cloning & Updating
 ### 4.3.1. Pull requests
@@ -139,7 +135,7 @@ where the function `mkdirectory()`, creates a directory if it does not exist. Ca
 Pull requests are automatically completed. To pull new changes, use the command
 
 ```
-pushd PyProjectTools & git pull & popd
+pushd pyprojecttools & git pull & popd
 ```
 
 in your terminal (opened in your working directory).
