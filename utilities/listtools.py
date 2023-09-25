@@ -1,3 +1,4 @@
+from random import shuffle
 from typing import Any, Dict, Iterable, List, Literal, Sequence, Set, Tuple
 
 """ Helper fuctions for any mutuable or immutable sequence """
@@ -117,3 +118,18 @@ def make_vec_comp_names(
     return [
         f"{vec.upper()}_{axis.lower()}" for vec in vector_types for axis in components
     ]
+
+
+def unique_int_list(start: int = None, stop: int = None, step: int = None) -> int:
+    """
+    Creates shuffled list of integers at set range.
+
+    Args:
+        start (int): Range start. Defaults to None.
+        stop (int): Range end. Defaults to None.
+        step (int): Step of range. Defaults to None.
+
+    Returns:
+        List[int]: List of shuffled integers.
+    """
+    return shuffle(range(start, stop, range))

@@ -54,9 +54,9 @@ pyprojecttools
 """
 
 from .baseclasses import datareaders, pipelines, plotters
+from .datahelpers import *
 from .dirhelpers import file_filter, mkdirectory
 from .multimmedia.photomanipulation import GIF
-from .datahelpers import *
 
 __version__ = "1.2.2"
 __all__ = [
@@ -71,4 +71,5 @@ __all__ = [
 __license__ = "MIT"
 __url__ = "https://github.com/kconfeiteiro/pyprojecttools"
 __email__ = "confeitk@outlook.com"
-__title__ = "PyProjectTools"
+__title__ = "pyprojecttools"
+
