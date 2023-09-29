@@ -1,8 +1,34 @@
+"""
+Houses useful pre-formatted strings commonly used
+
+Script Information
+------------------
+- Creator: Krysitan D. Confeiteiro
+   - confeitk@outlook.com
+- Workspace: pyprojecttools
+- FIlename: strfmts.py
+- Date: September, 29 2023
+
+Script Symbols
+--------------
+- variable `ISO8601date`
+- variable `longdateformat`
+- variable `osdate_time`
+- variable `osdate`
+- variable `today`
+- variable `unixtimestamp`
+- function `calculate_age`
+	- variable `age`
+	- variable `birthdate`
+	- variable `day`
+	- variable `month`
+	- variable `today`
+	- variable `year`
+"""
 from datetime import datetime
 
 today = datetime.now()
 
-""" Houses useful pre-formatted strings commonly used """
 
 # For file names
 osdate = today.strftime("%Y_%m_%d")

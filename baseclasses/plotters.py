@@ -1,22 +1,15 @@
 """
 Abstract base classes for plotting objects.
 
-Classes
+Symbols
 -------
 class Plot
-	variable reduc_types
-	method __init__
 	method columns
 	method dataset
 	method figure
 	method plot
 	method prepdata
 	method savefig
-	variable figtitle
-	variable output_dir
-	variable reduce_data
-	variable save_as
-	variable size
 
 
 """
@@ -26,8 +19,8 @@ from typing import Any, List, Optional
 
 from pandas import DataFrame
 
-from ..errors_exceptions import KeyErrorWarning, MissingDataError
 from ..datahelpers import reduce_df
+from ..errors_exceptions import KeyErrorWarning, MissingDataError
 from . import RANGE
 
 

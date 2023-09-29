@@ -1,11 +1,14 @@
 """
 Module for abstract classes (architectures) that are common and uncommon, for general usage.
 
-Header
-------
-Classes
+Script Symbols
+--------------
 class RANGE
 class PltCfg
+
+Module Symbols
+--------------
+
 """
 
 from enum import Enum

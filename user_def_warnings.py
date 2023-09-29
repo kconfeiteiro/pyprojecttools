@@ -1,4 +1,20 @@
-"""User defined warnings for general use."""
+"""
+User defined warnings for general use.
+
+Script Information
+------------------
+- Creator: Krystian D. Confeiteiro
+    - Contact: confeitk@outlook.com
+- Workspace: pyprojecttools
+- FIlename: user_def_warnings.py
+- Date: September, 14 2023
+
+Script Symbols
+--------------
+- class `MissingArgumentsWarning`
+- class `FutureImplementationWarning`
+- class `WorkInProgressWarning`
+"""
 
 
 class MissingArgumentsWarning(UserWarning):

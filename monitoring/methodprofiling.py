@@ -1,3 +1,22 @@
+"""
+Library for profiling methods and functions in classes, either object or static classes.
+
+Script Information
+------------------
+- Creator: Krysitan D. Confeiteiro
+   - confeitk@outlook.com
+- Workspace: pyprojecttools
+- FIlename: methodprofiling.py
+- Path: monitoring\methodprofiling.py
+- Date: September, 29 2023
+
+Script Symbols
+--------------
+- class `Counter`
+- class `Timer`
+"""
+
+
 import time
 from typing import Any, Tuple, Union
 

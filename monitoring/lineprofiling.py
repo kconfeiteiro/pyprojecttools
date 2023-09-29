@@ -7,6 +7,10 @@ Workspace: pyprojecttools
 FIlename: lineprofiling.py
 Path: monitoring\lineprofiling.py
 Date: September, 06 2023
+
+Script Symbols
+--------------
+- class `LineProfiler`
 """
 
 from typing import Callable

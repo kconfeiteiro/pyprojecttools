@@ -1,7 +1,29 @@
+"""
+Helper fuctions for any mutuable or immutable sequence.
+
+Script Information
+------------------
+- Creator: Krystian Ojeda Confeiteiro
+    - Contact: confeitk@outlook.com
+- Workspace: pyprojecttools
+- FIlename: listtools.py
+- Path: utilities\listtools.py
+- Date: September, 29 2023
+
+Script Symbols
+--------------
+- function `combine_list_strings`
+- function `combine_lists`
+- function `len_compare`
+- function `make_vec_comp_names`
+- function `map_matrix`
+- function `test_set`
+- function `to_dictionary`
+- function `unique_int_list`
+"""
 from random import shuffle
 from typing import Any, Dict, Iterable, List, Literal, Sequence, Set, Tuple
 
-""" Helper fuctions for any mutuable or immutable sequence """
 
 
 def map_matrix(m: int = ..., n: int = ...) -> List[Tuple[int, int]]:

@@ -1,6 +1,23 @@
+"""
+Anything related to unit conversions of any kind.
+
+Script Information
+------------------
+- Creator: Krystian D. Confeiteiro
+    - Contact: confeitk@outlook.com
+- Workspace: pyprojecttools
+- FIlename: units.py
+- Path: transformations\units.py
+- Date: September, 29 2023
+
+Script Information
+------------------
+- function `rad2deg`
+- function `deg2rad`
+"""
+
 import sympy
 
-"""Anything related to unit conversions of any kind"""
 
 
 def rad2deg(angle: float = ...) -> float:

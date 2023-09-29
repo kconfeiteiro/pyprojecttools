@@ -1,14 +1,15 @@
 """
 Helper functions for manipulation of images, plots, etc.
 
-Module Information
+Script Information
 ------------------
-Workspace: pyprojecttools
-FIlename: photomanipulation.py
-Path: multimmedia\photomanipulation.py
-Date: September, 14 2023
+- Creator: Krystian D. Confeiteiro
+    - Contact: confeitk@outlook.com
+- Workspace: pyprojecttools
+- FIlename: photomanipulation.py
+- Path: multimmedia\photomanipulation.py
+- Date: September, 14 2023
 """
-
 
 from glob import glob
 from typing import Literal
@@ -26,7 +27,7 @@ def make_gif(
     **kwargs,
 ):
     """
-    Static function for creating savable based on images in a directory
+    Static function for creating savable based on images in a directory.
 
     Args:
         duration (int, optional): Duration of gif in seconds. Defaults to 100.

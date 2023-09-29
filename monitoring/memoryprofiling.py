@@ -1,3 +1,22 @@
+"""
+Memory Profiling Python scripts (untested).
+
+Script Information
+------------------
+- Creator: Krysitan D. Confeiteiro
+   - confeitk@outlook.com
+- Workspace: pyprojecttools
+- FIlename: memoryprofiling.py
+- Path: monitoring\memoryprofiling.py
+- Date: September, 29 2023
+
+Script Symbols
+-------------
+- class `Counter`
+- class `Timer`
+"""
+
+
 from typing import (Callable)
 
 from memory_profiler import profile as memory_profile

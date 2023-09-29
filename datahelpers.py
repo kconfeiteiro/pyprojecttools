@@ -1,6 +1,14 @@
 """
 Data I/O operations (reading, saving, etc.).
 
+Script Information
+------------------
+- Contact: confeitk@outlook.com
+- Workspace: pyprojecttools
+- FIlename: datahelpers.py
+- Date: September 29, 2023
+
+
 Functions
 ---------
 - function read_json
@@ -17,6 +25,7 @@ from typing import Any, Dict, List, Literal, Sequence, Tuple
 from zipfile import ZipFile
 
 from pandas import DataFrame, ExcelWriter
+
 # from strfmts import osdate_time
 # from userwarnings import MissingArgumentsWarning
 

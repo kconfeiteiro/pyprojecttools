@@ -1,4 +1,17 @@
-"""Custom iterators for control flow."""
+"""
+Custom iterators for control flow.
+
+Script Information
+------------------
+- Workspace: pyprojecttools
+- Filename: iterators.py
+- Date: September 29, 2023
+
+Script Symbols
+---------------
+- class `ObjIterator`
+- class `DirectoryFileIterator`
+"""
 
 import os
 from typing import Iterable

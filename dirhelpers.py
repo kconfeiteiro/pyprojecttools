@@ -2,11 +2,11 @@
 Sorting, deleting, copying files, and dealing with directories
 
 Functions:
-- function delete_filetype
-- function file_filter
-- function joinpths
-- function mkdirectory
-- function uniquefilename
+- function `delete_filetype`
+- function `file_filter`
+- function `joinpths`
+- function `mkdirectory`
+- function `uniquefilename`
 """
 import glob
 import os

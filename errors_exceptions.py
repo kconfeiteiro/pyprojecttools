@@ -1,33 +1,15 @@
 """
 User defined errors and exceptions.
 
-Functions
----------
-function tryexcept
-
-Classes
--------
-class NotASetError
-	method __init__
-		variable args
-class IncompatibleArugmentsWarning
-    pass
-class MissingArgumentError
-  method __init__
-        variable functionname
-    method __str__
-class FileReadError
-	method __init__
-		variable filename
-	method __str__
-class MissingMethod
-	method __init__
-		variable classname
-		variable method
-	method __str__
-class KeyErrorWarning
-	method __init__
-		variable args
+Script Symbols
+--------------
+- function `tryexcept`
+- class `NotASetError`
+- class `IncompatibleArugmentsWarning`
+- class `MissingArgumentError`
+- class `FileReadError`
+- class `MissingMethod`
+- class `KeyErrorWarning`
 
 """
 

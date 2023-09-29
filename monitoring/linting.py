@@ -1,14 +1,26 @@
-from typing import (
-    Any,
-    Literal,
-)
+"""
+For directly linting Python files (currently untested).
+
+Script Information
+------------------
+- Creator: Krysitan D. Confeiteiro
+   - confeitk@outlook.com
+- Workspace: pyprojecttools
+- FIlename: linting.py
+- Path: monitoring\linting.py
+- Date: September, 29 2023
+
+Script Symbols
+--------------
+- class `Lint`
+
+"""
+
+from typing import Any, Literal
 
 import pylint.lint
 
 from ..datahelpers import to_txt
-
-
-""" For directly linting Python files (currently untested) """
 
 
 class Lint:

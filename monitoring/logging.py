@@ -1,3 +1,34 @@
+"""
+Explanation/Summary
+
+Script Information
+------------------
+- Creator: Krysitan D. Confeiteiro
+   - confeitk@outlook.com
+- Workspace: pyprojecttools
+- FIlename: logging.py
+- Path: monitoring\logging.py
+- Date: September, 29 2023
+
+Script Symbols
+--------------
+- variable `today`
+- variable `formatted_date`
+- class `LoggerBackend`
+	- method `generate_unique_name`
+- class Logger
+	- method `log`
+		- function `decorator`
+			- function `wrapper`
+	- method `manual_log`
+- class LogDictConfig
+    - variable `filename`
+    - variable `filemode`
+    - variable `format`
+    - variable `level`
+"""
+
+
 import logging
 import os
 import timeit

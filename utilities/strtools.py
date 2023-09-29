@@ -1,5 +1,13 @@
 """
 Helper fuctions for strings operations/manipulation
+
+Script Information
+------------------
+- Contact: confeitk@outlook.com
+- Workspace: pyprojecttools
+- FIlename: photomanipulation.py
+- Path: multimmedia\photomanipulation.py
+- Date: September, 14 2023
 """
 import ast
 import re
