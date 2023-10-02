@@ -98,6 +98,26 @@ def to_json(
         json.dump(dict_to_save, file, **kwargs)
 
 
+def df_to_json(
+    data: DataFrame = None,
+    save_as: str = None,
+    mode: Literal["w", "wb"] = "w",
+    cfg={"orient": "dict", "into": type(dict), "index": True},
+):
+    """
+    Saves a Pandas DataFrame into a JSON file.
+
+    Args:
+        data (DataFrame): DataFrame you are saving. Default to None.
+        save_as (string): Name of JSON file you are saving to. Default to None.
+        mode (Literal["w", "wb"]): Mode you are saving the DataFrame with. Default to "w".
+        cfg (Dict): Configuration dictionary for DataFrame -> Dictionary conversion. Default to None.
+    """
+    data = data.to_dict(**cfg)
+    with open(save_as, mode) as file:
+        json.dump(data, file)
+
+
 def read_txt(
     filename: str = None, mode: Literal["r", "rb"] = "r", **kwargs
 ) -> List[str]:
