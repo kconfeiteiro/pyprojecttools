@@ -135,7 +135,9 @@ def read_txt(
         return file.readlines() if os.path.exists(filename) else None
 
 
-def read_json(filename: str = None, *args, **kwargs) -> Dict[Any, Any]:
+def read_json(
+    filename: str = None, sort_key: Any = None, *args, **kwargs
+) -> Dict[Any, Any]:
     """
     Reads JSON file. Returns None if path does not exist.
 
@@ -146,7 +148,11 @@ def read_json(filename: str = None, *args, **kwargs) -> Dict[Any, Any]:
         dictionary: returns read JSON data
     """
     with open(filename, *args, **kwargs) as f:
-        return json.load(f) if os.path.exists(filename) else None
+        data = json.load(f) if os.path.exists(filename) else None
+        if sort_key:
+            return sorted(data, key=sort_key)
+        else:
+            return data
 
 
 def reduce_df(
@@ -222,8 +228,34 @@ def zip_folder(
 def zip_extract(
     zipped_file: str = None,
     read_mode: Literal["r"] = "r",
-    extract_mode: Literal["folder", "lists"] = "folder",
+    extract_mode: Literal["folder", "lists"] = "folder",  # FIXME - not finished
     out_dir: str = None,
-) -> List[str] | None:
+) -> None:
+    """
+    Extracts contents of a ZIP file.
+
+    Args:
+        zipped_file (str, optional): File path to zipped file. Defaults to None.
+        read_mode (Literal[&quot;r&quot;], optional): File reading mode. Defaults to "r".
+        extract_mode (Literal[&quot;folder&quot;, &quot;lists&quot;], optional): ZIP extraction mode. Defaults to "folder".
+        out_dir (str, optional): Directory you want to save the extracted contents to. Defaults to None.
+    """
+    # TODO - finish the second half of this function
     with ZipFile(zipped_file, read_mode) as file:
         file.extractall(out_dir)
+
+
+def save_dict2xml(
+    data: Dict[str, Any] = None, save_as: str = None, mode: Literal["w", "wb"] = "wb"
+):
+    """
+    Saves a dictionary to an XML file.
+
+    Args:
+        data (Dict[str, Any], optional): Dictionary that you want to save. Defaults to None.
+        save_as (str, optional): Name you are saving the XML file as. Defaults to None.
+        mode (Literal[&quot;w&quot;, &quot;wb&quot;], optional): File writing mode. Defaults to "wb".
+    """
+    data = data.encode()
+    with open(save_as, mode) as file:
+        file.write(data)
