@@ -56,14 +56,14 @@ pyprojecttools
 from .baseclasses import datareaders, pipelines, plotters
 from .datahelpers import *
 from .dirhelpers import file_filter, mkdirectory
-from .multimmedia.photomanipulation import GIF
+from .multimmedia.photomanipulation import make_gif
 
 __version__ = "1.2.2"
 __all__ = [
     "datareaders",
     "DirectoryFileIterator",
     "file_filter",
-    "GIF",
+    "make_gif",
     "mkdirectory",
     "pipelines",
     "plotters",
