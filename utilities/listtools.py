@@ -21,9 +21,10 @@ Script Symbols
 - function `to_dictionary`
 - function `unique_int_list`
 """
-from random import shuffle
+from random import sample
 from typing import Any, Dict, Iterable, List, Literal, Sequence, Set, Tuple
 
+import numpy as np
 
 
 def map_matrix(m: int = ..., n: int = ...) -> List[Tuple[int, int]]:
@@ -142,7 +143,7 @@ def make_vec_comp_names(
     ]
 
 
-def unique_int_list(start: int = None, stop: int = None, step: int = None) -> int:
+def shuffled_range(start: int = None, stop: int = None) -> int:
     """
     Creates shuffled list of integers at set range.
 
@@ -154,4 +155,6 @@ def unique_int_list(start: int = None, stop: int = None, step: int = None) -> in
     Returns:
         List[int]: List of shuffled integers.
     """
-    return shuffle(range(start, stop, range))
+    _list = np.arange(start, stop + 1)
+    _range = list(_list)
+    return sample(_range, len(_range))

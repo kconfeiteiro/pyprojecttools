@@ -33,7 +33,6 @@ _reduced_types = DataFrame | List[DataFrame] | Tuple[DataFrame]
 
 
 def to_excel(
-    # save_as: str = f"untitled_excel_sheet-{osdate_time}.xlsx",
     save_as: str = None,
     df: DataFrame | List[DataFrame] = None,
     sheetnames: str | List[str] = "Main",
