@@ -11,11 +11,12 @@ Functions:
 import glob
 import os
 from typing import List, Tuple
-from utilities.strtools import num_to_word
+from .utilities.strtools import num_to_word
 
 
 def delete_filetype(folder: str = ..., *filetypes: str) -> None:
-    """Deletes files of specific type
+    """
+    Deletes files of specific type
 
     Args:
         folder (str, optional): target directory. Defaults to ....
@@ -29,7 +30,8 @@ def delete_filetype(folder: str = ..., *filetypes: str) -> None:
 
 
 def mkdirectory(*paths: str, display: bool = False) -> None:
-    """Makes directory if it does not exist.
+    """
+    Makes directory if it does not exist.
 
     Args:
         paths (list): enter enter each individual arguments for each path (i.e., "path1", "path1", etc.)
@@ -51,7 +53,8 @@ def uniquefilename(
     ),  # CWD
     copy_pattern: str = "Run ",
 ) -> Tuple[str, int]:
-    """Produces updating enumeration of consecutive file names
+    """
+    Produces updating enumeration of consecutive file names
 
     Args:
         filename (str): original name of file. Defaults to ...
@@ -72,7 +75,8 @@ def uniquefilename(
 
 
 def file_filter(parent_folder: str = ..., file_type: str = ...) -> List[str]:
-    """Fetches all files recursively in a desired directory and all its subdirectories.
+    """
+    Fetches all files recursively in a desired directory and all its subdirectories.
 
     Args:
         parent_folder (str, optional): path to folder you want to parse. Defaults to ....
@@ -85,7 +89,8 @@ def file_filter(parent_folder: str = ..., file_type: str = ...) -> List[str]:
 
 
 def joinpths(*paths: str) -> str:
-    """Joins paths.
+    """
+    Joins paths.
 
     Returns:
         str: joined paths
