@@ -21,9 +21,11 @@ Functions
 import json
 import os
 import warnings
-from typing import Any, Dict, List, Literal, Sequence, Tuple
+from typing import Any, Callable, Dict, List, Literal, Sequence, Tuple
 from zipfile import ZipFile
 
+import numpy as np
+import torch
 from pandas import DataFrame, ExcelWriter
 
 # from strfmts import osdate_time
@@ -246,7 +248,7 @@ def zip_extract(
 
 def save_dict2xml(
     data: Dict[str, Any] = None, save_as: str = None, mode: Literal["w", "wb"] = "wb"
-):
+) -> None:
     """
     Saves a dictionary to an XML file.
 
@@ -258,3 +260,99 @@ def save_dict2xml(
     data = data.encode()
     with open(save_as, mode) as file:
         file.write(data)
+
+
+def extract_tar(tarfile: str = None, path: str = None) -> None:
+    """
+    Extracts data from a `.tar` file.
+
+    Parameters
+    ----------
+    tarfile : str, optional
+        Path to your `.tar` file, by default None
+    path : str, optional
+        Path where you want to save the data to, by default None
+    """
+    with tarfile.open(tarfile) as file:
+        file.extractall(path)
+
+
+def list2tensor(
+    y: Sequence | np.array, sqz: int = 1, conv_type: Callable = torch.int64
+) -> torch.Tensor:
+    """
+    Converts an array (or list) into a `PyTorch` tensor (`torch.Tensor`).
+
+    Parameters
+    ----------
+    y : Sequence | np.array
+        Sequence that you want to convert to a tensor.
+    sqz : int, optional
+        Squeeze value, by default 1
+    conv_type : Callable, optional
+        Type you want to convert the tensor values to, by default torch.int64
+
+    Returns
+    -------
+    torch.Tensor
+        Final tensor from sequence.
+    """
+    y = y.to_numpy()
+    y = torch.Tensor(y)
+    y = y.squeeze(sqz)
+    y = y.type(conv_type)
+    return y
+
+
+def conv2str(df: DataFrame = None, dtype: str = "str"):
+    """
+    Converts all columns of a given DataFrame into a desired data type.
+
+    Parameters
+    ----------
+    df : DataFrame, optional
+        DataFrame that you want to convert, by default None
+    dtype : str, optional
+        Data type you want to convert the columns to, by default "str"
+    """
+    for colname in df.columns:
+        try:
+            df[colname] = df[colname].astype(dtype)
+            print(f"'{colname}' converted to {dtype}")
+        except:
+            print(f"'{colname}' conversion failed")
+
+
+def combine_list(strings: list) -> str:
+    """
+    Combineds a list of strings into a single string.
+
+    Parameters
+    ----------
+    strings : list
+        List of strings that you want to convert into a single string.
+
+    Returns
+    -------
+    str
+        Final combined string.
+    """
+    return "".join(strings).strip()
+
+
+def normalize(matrix: np.array | Sequence = None) -> np.array:
+    """
+    Divides matrix (or array) my its norm for normalization.
+
+    Parameters
+    ----------
+    matrix : np.array | Sequence, optional
+        Matrix (or array) that you want to normalize, by default None
+
+    Returns
+    -------
+    np.array
+        Normalized array or matrix.
+    """
+    norm = np.linalg.norm(matrix)
+    return matrix / norm

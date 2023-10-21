@@ -11,6 +11,7 @@ Functions:
 import glob
 import os
 from typing import List, Tuple
+from utilities.strtools import num_to_word
 
 
 def delete_filetype(folder: str = ..., *filetypes: str) -> None:
@@ -103,3 +104,92 @@ def listdir(path: str = None) -> List[str]:
         List[str]: List of file in said directory.
     """
     return glob.glob(pathname=path)
+
+
+def find_last_file(
+    path: str = ...,
+    keyword: str = None,
+    fetch: int = None,
+    usetime: bool = False,
+    showcase: bool = False,
+):
+    """
+    Finds the last files in a directory depending on keyword or just last integer-amount of files.
+
+    Parameters
+    ----------
+    path : str, optional
+        Path to directory, by default ...
+    keyword : str, optional
+        Keyword to search directory, by default None
+    fetch : int, optional
+        Integer amount of (last) files to fetch, by default None
+    usetime : bool, optional
+        Option to find the files if based on their times, by default False
+    showcase : bool, optional
+        Option to print the findings (if not already done manually), by default False
+
+    Returns
+    -------
+    List
+        List of files found (as absolute paths).
+    """
+    if usetime:
+        files = os.listdir(path)
+        paths = [
+            os.path.join(path, basename).replace(os.path.sep, "/") for basename in files
+        ]
+        temp = max(paths, key=os.path.getctime).replace(os.path.sep, "/")
+        temp = os.path.basename(temp)
+        print(f"Returned last file using key:", temp)
+        return temp
+    else:
+        temp = os.listdir(path)
+        if keyword is not None:
+            try:
+                temp = [ind for ind in temp if keyword in ind]
+                if showcase:
+                    [
+                        print(f"Found '{item}' in '{path}' with keyword '{keyword}'")
+                        for item in temp
+                    ]
+            except:
+                print(f"No items found in '{path}' with keyword '{keyword}'")
+
+        if fetch:
+            temp = temp[-fetch:]
+            if fetch == 0:
+                print(f"Returned last file")
+            else:
+                if fetch > len(temp):
+                    number = num_to_word(abs(fetch))
+                    number1 = num_to_word(len(temp))
+
+                    if keyword and showcase:
+                        _msg = f"Returning last {number1} files with keyword '{keyword}': {temp}"
+                        print(_msg)
+                    elif showcase:
+                        _msg = f"Returning last {number1}: {temp} "
+                        print(_msg)
+                else:
+                    number = num_to_word(abs(fetch))
+                    if showcase:
+                        print(
+                            f"Returned last {number} files with keyword '{keyword}': {temp}"
+                            if keyword
+                            else f"Returning last {number} files:",
+                            temp,
+                        )
+
+            return temp
+        else:
+            try:
+                lastfile = temp[-1]
+                if showcase:
+                    print(f"Returned last file: '{lastfile}'")
+                return lastfile
+            except:
+                if showcase:
+                    print(f"No items found in '{path}' with keyword '{keyword}'")
+
+                return None
