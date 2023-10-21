@@ -18,7 +18,7 @@ import num2word
 _join_chars = Literal[" ", ",", "-", "_", "/", "\\"]
 
 
-def numToWord(num: int = None) -> str:
+def num_to_word(num: int = None) -> str:
     """Converts an integer to its corresponding word-phrase, i.e., 23 -> 'twenty three'
 
     Args:
@@ -116,7 +116,7 @@ def make_vec_comp_names(
     ]
 
 
-def numToWord(num: int = None) -> str:
+def num_to_word(num: int = None) -> str:
     """
     Converts an integer to its corresponding word-phrase, i.e., 23 -> 'twenty three'
 
