@@ -72,6 +72,7 @@ def to_txt(
         lines (Union[str, List[str]], optional): string or list of strings to save to file. Defaults to None.
         mode (literal, optional): write mode for ExcelWriter. Defaults to 'w'.
     """
+
     with open(save_as, mode=mode, **kwargs) as file:
         if isinstance(lines, str):
             file.write(lines)

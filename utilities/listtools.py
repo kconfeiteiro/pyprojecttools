@@ -158,3 +158,22 @@ def shuffled_range(start: int = None, stop: int = None) -> int:
     _list = np.arange(start, stop + 1)
     _range = list(_list)
     return sample(_range, len(_range))
+
+
+def append_to_each(_list: Sequence[str] = None, _str: str = None) -> Sequence[str]:
+    """
+    Appends a string to each string in a mutuable sequence of strings.
+
+    Parameters
+    ----------
+    _list : Sequence[str], optional
+        The string you want to append each substring to, by default None
+    _str : str, optional
+        Substring you want to append to each list item, by default None
+
+    Returns
+    -------
+    Sequence[str]
+        New sequence of strings with substring appended to each item.
+    """
+    return list(map(lambda x: f"{x} {_str}", _list))

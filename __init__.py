@@ -72,4 +72,3 @@ __license__ = "MIT"
 __url__ = "https://github.com/kconfeiteiro/pyprojecttools"
 __email__ = "confeitk@outlook.com"
 __title__ = "pyprojecttools"
-
