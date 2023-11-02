@@ -93,10 +93,6 @@ class DataPipeline(PipelineBase):
         self.data.append(data)
 
     @abstractmethod
-    def statistics(self):
-        pass
-
-    @abstractmethod
     def analyze(self):
         pass
 
