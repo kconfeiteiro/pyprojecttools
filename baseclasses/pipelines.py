@@ -24,8 +24,9 @@ ABC Methods Inherited From `Pipelinebase`
 """
 
 from abc import ABC, abstractmethod
+from typing import Any, Sequence
 
-from pandas import Series, DataFrame
+from pandas import DataFrame, Series
 
 from ..iterators import ObjIterator
 
@@ -59,14 +60,6 @@ class PipelineBase(ABC):
         )
         return f"{class_name}({attributes})"
 
-    @abstractmethod
-    def preprocess(self):
-        pass
-
-    @abstractmethod
-    def generate_report(self):
-        pass
-
 
 class DataPipeline(PipelineBase):
     """
@@ -84,13 +77,13 @@ class DataPipeline(PipelineBase):
     """
 
     def __init__(self) -> None:
-        self.data = None
+        self.data = []
         self._index = 0
 
     def __len__(self):
         return len(self.data)
 
-    def __getitem__(self, index):
+    def __getitem__(self, index: int = None) -> Sequence[Any]:
         return self.data[index]
 
     def __iter__(self):
@@ -109,4 +102,12 @@ class DataPipeline(PipelineBase):
 
     @abstractmethod
     def plots(self):
+        pass
+
+    @abstractmethod
+    def preprocess(self):
+        pass
+
+    @abstractmethod
+    def generate_report(self):
         pass
