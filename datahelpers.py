@@ -11,6 +11,7 @@ Script Information
 
 Functions
 ---------
+- class ParseCfg
 - function read_json
 - function read_txt
 - function write_to_excel
@@ -21,6 +22,7 @@ Functions
 import json
 import os
 import warnings
+from configparser import ConfigParser
 from typing import Any, Callable, Dict, List, Literal, Sequence, Tuple
 from zipfile import ZipFile
 
@@ -357,3 +359,34 @@ def normalize(matrix: np.array | Sequence = None) -> np.array:
     """
     norm = np.linalg.norm(matrix)
     return matrix / norm
+
+
+class ParseConfig(ConfigParser):
+    def __init__(self, filepath: str = None) -> None:
+        self.path = filepath
+
+        self._FILE = ConfigParser(self.path)
+        self._parsed_file = self._FILE.read()
+
+    def get_val(
+        self,
+        section: str = None,
+        key: str = None,
+        _type: Literal["str", "bool", "int", "float"] = None,
+    ) -> Any:
+        if not _type:
+            return None
+
+        match _type:
+            case "str":
+                return self._parsed_file.get(section, key)
+            case "bool":
+                return self._parsed_file.getboolean(section, key)
+            case "int":
+                return self._parsed_file.getint(section, key)
+            case "float":
+                return self._parsed_file.getfloat(section, key)
+
+    @property
+    def cfgsections(self):
+        return self._parsed_file.sections()
