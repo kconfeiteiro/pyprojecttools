@@ -362,6 +362,7 @@ def normalize(matrix: np.array | Sequence = None) -> np.array:
 
 
 class ParseConfig(ConfigParser):
+    # FIXME - NOT WORKING
     def __init__(self, filepath: str = None) -> None:
         self.path = filepath
 
