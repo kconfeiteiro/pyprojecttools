@@ -6,7 +6,7 @@ Script Information
 - Creator: Krysitan D. Confeiteiro
    - confeitk@outlook.com
 - Workspace: pyprojecttools
-- FIlename: strfmts.py
+- Filename: strfmts.py
 - Date: September, 29 2023
 
 Script Symbols
